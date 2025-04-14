@@ -1,0 +1,83 @@
+GP,Day,Month,Year,Date,Local_Time,Home/Away,Opponent
+1,09,Oct,2024,2024-10-09,07:00 PM,Vs.,Calgary Flames
+2,11,Oct,2024,2024-10-11,07:00 PM,Vs.,Philadelphia Flyers
+3,15,Oct,2024,2024-10-15,04:00 PM,@,Tampa Bay Lightning
+4,17,Oct,2024,2024-10-17,04:00 PM,@,Florida Panthers
+5,19,Oct,2024,2024-10-19,04:00 PM,@,Philadelphia Flyers
+6,22,Oct,2024,2024-10-22,05:15 PM,@,Chicago Blackhawks
+7,26,Oct,2024,2024-10-26,07:00 PM,Vs.,Pittsburgh Penguins
+8,28,Oct,2024,2024-10-28,07:00 PM,Vs.,Carolina Hurricanes
+9,30,Oct,2024,2024-10-30,07:30 PM,Vs.,New Jersey Devils
+10,02,Nov,2024,2024-11-02,07:00 PM,@,San Jose Sharks
+11,05,Nov,2024,2024-11-05,07:00 PM,@,Anaheim Ducks
+12,07,Nov,2024,2024-11-07,07:30 PM,@,Los Angeles Kings
+13,09,Nov,2024,2024-11-09,07:00 PM,Vs.,Edmonton Oilers
+14,12,Nov,2024,2024-11-12,07:00 PM,Vs.,Calgary Flames
+15,14,Nov,2024,2024-11-14,07:00 PM,Vs.,New York Islanders
+16,16,Nov,2024,2024-11-16,07:00 PM,Vs.,Chicago Blackhawks
+17,17,Nov,2024,2024-11-17,07:00 PM,Vs.,Nashville Predators
+18,19,Nov,2024,2024-11-19,07:00 PM,Vs.,New York Rangers
+19,23,Nov,2024,2024-11-23,04:00 PM,@,Ottawa Senators
+20,26,Nov,2024,2024-11-26,04:00 PM,@,Boston Bruins
+21,27,Nov,2024,2024-11-27,04:30 PM,@,Pittsburgh Penguins
+22,29,Nov,2024,2024-11-29,12:00 PM,@,Buffalo Sabres
+23,01,Dec,2024,2024-12-01,09:30 AM,@,Detroit Red Wings
+24,03,Dec,2024,2024-12-03,05:00 PM,@,Minnesota Wild
+25,06,Dec,2024,2024-12-06,07:00 PM,Vs.,Columbus Blue Jackets
+26,08,Dec,2024,2024-12-08,01:00 PM,Vs.,Tampa Bay Lightning
+27,10,Dec,2024,2024-12-10,07:00 PM,Vs.,St. Louis Blues
+28,12,Dec,2024,2024-12-12,07:00 PM,Vs.,Florida Panthers
+29,14,Dec,2024,2024-12-14,07:00 PM,Vs.,Boston Bruins
+30,16,Dec,2024,2024-12-16,07:30 PM,Vs.,Colorado Avalanche
+31,18,Dec,2024,2024-12-18,07:00 PM,@,Utah Hockey Club
+32,19,Dec,2024,2024-12-19,07:00 PM,@,Vegas Golden Knights
+33,21,Dec,2024,2024-12-21,07:00 PM,Vs.,Ottawa Senators
+34,23,Dec,2024,2024-12-23,06:00 PM,Vs.,San Jose Sharks
+35,28,Dec,2024,2024-12-28,01:00 PM,Vs.,Seattle Kraken
+36,31,Dec,2024,2024-12-31,06:00 PM,@,Calgary Flames
+37,02,Jan,2025,2025-01-02,07:00 PM,@,Seattle Kraken
+38,03,Jan,2025,2025-01-03,07:00 PM,Vs.,Nashville Predators
+39,06,Jan,2025,2025-01-06,04:30 PM,@,Montreal Canadiens
+40,08,Jan,2025,2025-01-08,04:30 PM,@,Washington Capitals
+41,10,Jan,2025,2025-01-10,04:00 PM,@,Carolina Hurricanes
+42,11,Jan,2025,2025-01-11,04:00 PM,@,Toronto Maple Leafs
+43,14,Jan,2025,2025-01-14,05:00 PM,@,Winnipeg Jets
+44,16,Jan,2025,2025-01-16,07:00 PM,Vs.,Los Angeles Kings
+45,18,Jan,2025,2025-01-18,07:00 PM,Vs.,Edmonton Oilers
+46,21,Jan,2025,2025-01-21,07:00 PM,Vs.,Buffalo Sabres
+47,23,Jan,2025,2025-01-23,06:00 PM,@,Edmonton Oilers
+48,25,Jan,2025,2025-01-25,07:00 PM,Vs.,Washington Capitals
+49,27,Jan,2025,2025-01-27,04:30 PM,@,St. Louis Blues
+50,29,Jan,2025,2025-01-29,06:00 PM,@,Nashville Predators
+51,31,Jan,2025,2025-01-31,05:00 PM,@,Dallas Stars
+52,02,Feb,2025,2025-02-02,05:00 PM,Vs.,Detroit Red Wings
+53,04,Feb,2025,2025-02-04,07:00 PM,Vs.,Colorado Avalanche
+54,06,Feb,2025,2025-02-06,07:30 PM,@,San Jose Sharks
+55,08,Feb,2025,2025-02-08,04:00 PM,Vs.,Toronto Maple Leafs
+56,22,Feb,2025,2025-02-22,07:00 PM,@,Vegas Golden Knights
+57,23,Feb,2025,2025-02-23,05:00 PM,@,Utah Hockey Club
+58,26,Feb,2025,2025-02-26,07:00 PM,@,Los Angeles Kings
+59,27,Feb,2025,2025-02-27,07:00 PM,@,Anaheim Ducks
+60,01,Mar,2025,2025-03-01,07:00 PM,@,Seattle Kraken
+61,05,Mar,2025,2025-03-05,07:30 PM,Vs.,Anaheim Ducks
+62,07,Mar,2025,2025-03-07,07:00 PM,Vs.,Minnesota Wild
+63,09,Mar,2025,2025-03-09,06:00 PM,Vs.,Dallas Stars
+64,11,Mar,2025,2025-03-11,07:00 PM,Vs.,Montreal Canadiens
+65,12,Mar,2025,2025-03-12,06:00 PM,@,Calgary Flames
+66,15,Mar,2025,2025-03-15,07:00 PM,Vs.,Chicago Blackhawks
+67,16,Mar,2025,2025-03-16,05:00 PM,Vs.,Utah Hockey Club
+68,18,Mar,2025,2025-03-18,07:00 PM,Vs.,Winnipeg Jets
+69,20,Mar,2025,2025-03-20,04:30 PM,@,St. Louis Blues
+70,22,Mar,2025,2025-03-22,10:00 AM,@,New York Rangers
+71,24,Mar,2025,2025-03-24,04:30 PM,@,New Jersey Devils
+72,26,Mar,2025,2025-03-26,04:30 PM,@,New York Islanders
+73,28,Mar,2025,2025-03-28,04:00 PM,@,Columbus Blue Jackets
+74,30,Mar,2025,2025-03-30,12:00 PM,@,Winnipeg Jets
+75,02,Apr,2025,2025-04-02,07:30 PM,Vs.,Seattle Kraken
+76,05,Apr,2025,2025-04-05,01:00 PM,Vs.,Anaheim Ducks
+77,06,Apr,2025,2025-04-06,07:00 PM,Vs.,Vegas Golden Knights
+78,08,Apr,2025,2025-04-08,05:00 PM,@,Dallas Stars
+79,10,Apr,2025,2025-04-10,06:00 PM,@,Colorado Avalanche
+80,12,Apr,2025,2025-04-12,07:00 PM,Vs.,Minnesota Wild
+81,14,Apr,2025,2025-04-14,07:00 PM,Vs.,San Jose Sharks
+82,16,Apr,2025,2025-04-16,07:00 PM,Vs.,Vegas Golden Knights
