@@ -14,5 +14,6 @@ def authenticate_reddit(config_file):
         user_agent="test_bot"
         )
     
+    print(f'Logged in as user: {reddit_instance.user.me()}')
     return reddit_instance
 
