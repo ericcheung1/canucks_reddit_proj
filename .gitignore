@@ -1,4 +1,4 @@
-test.py
+test*.py
 *.ini
 
 # Byte-compiled / optimized / DLL files
