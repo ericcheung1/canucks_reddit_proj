@@ -1,6 +1,5 @@
 import os
 from authenticate import authenticate_reddit
-import praw
 from datetime import datetime as dt, timedelta, timezone
 import pandas as pd
 
@@ -15,6 +14,7 @@ subreddit = reddit_instance.subreddit('canucks')
 game_log['UTC_Timestamp'] = pd.to_datetime(game_log['UTC_Timestamp'])
 relavent_results = []
 relavent_ids = set()
+relavent_titles = []
 for index, game in game_log.iterrows():
     query = f'Post Game Thread: {game['Opponent']} {game['Day']} {game['Month']} {game['Year']}'
     results = subreddit.search(query=query, sort='relavent', time_filter='all')
@@ -27,5 +27,9 @@ for index, game in game_log.iterrows():
             print(submission.title)
             relavent_results.append(submission)
             relavent_ids.add(submission.id)
+            relavent_titles.append(submission.title)
 
 print(len(relavent_results))
+
+game_thread_df = pd.DataFrame({"post_title": relavent_titles, "post_id": relavent_results})
+game_thread_df.to_csv(os.path.join(project_root, "data", "post_ids.csv"), index=False)
