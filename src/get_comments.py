@@ -1,33 +1,42 @@
-import os
-from authenticate import authenticate_reddit
-import pandas as pd
-
-project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-print(f"Project Root: {project_root}")
-
-reddit_instance = authenticate_reddit('config.ini')
-subreddit = reddit_instance.subreddit('canucks')
-sub_id = "1g1swzp"
-
 def fetch_comments(reddit, submission_id):
+    """
+    Recreates comment forest from PRAW in memory as a dictionary.
+
+    This function takes a reddit instance and a reddit post id and
+    returns a MongoDB-like document in memory as a dictionary.
+
+    Args:
+        reddit (praw.Reddit): A authenticated reddit instance.
+        submission_id (str): A string representing a reddit submission id.
+    
+    Returns:
+        post_data (dict): A dictionary replicating the comment forest structure.
+    """
     submission = reddit.submission(id=submission_id)
+    
+    # final dictionary to store post information and comments/replies
     post_data = {
             "post_id": submission.id, 
             "title": submission.title,
-            "author": submission.author,
+            "author": str(submission.author),
             "utc_created": submission.created_utc, 
             "comments": []
             }
+    
+    # temporary storage of comments to check if is reply or not
     comment_map = {}
 
     print(submission.title)
+
+    # gets comments from "more comments"
     submission.comments.replace_more(limit=None)
     comment_queue = submission.comments[:] # type: ignore
 
+    # looping through each level of comment forest in breath-first search
     while comment_queue:
         comment = comment_queue.pop(0)
-        # print(f"comment: {comment.body}")
-        # extract current comment in queue's info as a dict
+
+        # extract info from current comment in queue as a dictionary
         comment_dict = {    
             "comment_id": comment.id, 
             "author": str(comment.author), 
@@ -38,26 +47,33 @@ def fetch_comments(reddit, submission_id):
         
         # places current comment into comment_map dict
         # by having comment_id be the key and whole comment_dict as the value
+        # makes it easier to look up comment by comment id
         comment_map[comment.id] = comment_dict 
 
         # if comment exists and is a reply
         # because replies have parent id prefixed with "t1_"
         if comment_dict and comment.parent_id.startswith("t3_"): 
+            
+            # are top level comments and appending them to post data
             post_data["comments"].append(comment_dict)
         else:
 
-            # assigns parent id variable which
-            # is the parent submission's id
-            # also strips "t1_" prefix
+            # strips "t1_" prefix
+            # assigns the parent id variable from
+            # .parent_id method which is parent submission's id
+            # we know these are replies as they don't start with "t3_"
             parent_id = comment.parent_id[3:]
-            # print(f"parent id: {parent_id}")
 
-            if parent_id in comment_map: 
-                # if parent id is submission id
+            # if parent comment is in comment map
+            # means if parent submission is in comment map
+            # connecting child's id to its parent post 
+            if parent_id in comment_map:
+
                 # append it as a reply in comment map
                 comment_map[parent_id]["replies"].append(comment_dict)
+
+        # adds replies to current comment to back of queue
         comment_queue.extend(comment.replies)
     
     return post_data
             
-print(f"Post data: {fetch_comments(reddit_instance, sub_id)}")
