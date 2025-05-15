@@ -1,5 +1,6 @@
 import configparser
 import praw
+from pymongo import MongoClient
 import os
 
 def authenticate_reddit(config_file):
@@ -29,3 +30,10 @@ def authenticate_reddit(config_file):
     print(f'Logged in as user: {reddit_instance.user.me()}')
     return reddit_instance
 
+def connect_mongodb(config_file):
+    project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    config = configparser.ConfigParser()
+    config.read(os.path.join(project_root, config_file))
+
+    client = MongoClient(config.get('MongoDB', 'local_host'))
+    return client
