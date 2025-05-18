@@ -26,7 +26,6 @@ def fetch_comments(reddit, submission_id):
     # temporary storage of comments to check if is reply or not
     comment_map = {}
 
-    print(submission.title)
 
     # gets comments from "more comments"
     submission.comments.replace_more(limit=None)

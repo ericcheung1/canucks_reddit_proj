@@ -1,4 +1,3 @@
-import logging.config
 from authenticate import authenticate_reddit, connect_mongodb
 from get_comments import fetch_comments
 from insert_into_db import insert_posts
@@ -27,13 +26,23 @@ database = "test_db"
 collection = "posts"
 
 for index, data in post_ids.iterrows():
+    db = client[database]
+    post_collection = db[collection]
+    exists = post_collection.find_one( { "post_id" : f"{data["post_id"]}" } )
+
+    if exists:
+        logging.info(f"Post is Already in Collection")
+        continue
     try:
         post_data = fetch_comments(reddit_instance, data["post_id"])
         if post_data:
             logging.info(f"Successfully retrieved post data: {post_data["title"]}")
             time.sleep(2)
             inserted = insert_posts(client, database, collection, post_data)
-            logging.info(f"Successfully inserted post into database: {inserted}")
+            if inserted:
+                logging.info(f"Successfully inserted post into database: {inserted}")
+        else:
+            logging.warning(f"Failed to insert post data: {post_data["title"]}")
     except Exception as e:
         logging.error(f"Error in inserting process: {e}")
     
