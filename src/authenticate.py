@@ -35,5 +35,5 @@ def connect_mongodb(config_file):
     config = configparser.ConfigParser()
     config.read(os.path.join(project_root, config_file))
 
-    client = MongoClient(config.get('MongoDB', 'local_host'))
+    client = MongoClient(config.get('MongoDB', 'server'))
     return client

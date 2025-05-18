@@ -1,5 +1,6 @@
 test*.py
 *.ini
+test_ids.csv
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
