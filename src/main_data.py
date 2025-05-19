@@ -19,11 +19,11 @@ logging.warning("This message indicates a potential problem.")
 logging.error("This message indicates a serious error.")
 logging.critical("This message indicates a critical error which might lead to program termination")
 
-post_ids = pd.read_csv(os.path.join(project_root, "data", "test_ids.csv"))
+post_ids = pd.read_csv(os.path.join(project_root, "data", "post_ids.csv"))
 reddit_instance = authenticate_reddit("config.ini")
 client = connect_mongodb("config.ini")
-database = "test_db"
-collection = "posts"
+database = "canucks_reddit_data"
+collection = "post_game_threads"
 
 for index, data in post_ids.iterrows():
     db = client[database]
