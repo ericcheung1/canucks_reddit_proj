@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canucks Reddit Posts</title>
+</head>
+<body>
+    <h1>All Canucks Reddit Posts</h1>
+    <ul>
+        {% for post in posts %}
+            <li>
+                <a href="{{ url_for('main.post_detail', post_id=post.post_id) }}">
+                    {{ post.title }} 
+                </a>
+            </li>
+        {% else %}
+            <li>No posts found. (Is your MongoDB running and data collected?)</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

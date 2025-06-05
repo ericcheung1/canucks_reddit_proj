@@ -21,7 +21,6 @@ class Post(Document):
     title = StringField(required=True)
     author = StringField(default="[deleted]")
     url = URLField()
-    num_comments = IntField(default=0)
     utc_created = IntField()
 
     comments = ListField(EmbeddedDocumentField(Comment))

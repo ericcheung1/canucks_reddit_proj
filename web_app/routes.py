@@ -5,12 +5,11 @@ bp = Blueprint("main", __name__)
 
 @bp.route('/')
 def index():
-    return "<h1>Placeholder for my Canucks Reddit Project!!</h1>"
+    return f'<h1>Welcome to the Canucks Reddit Data!</h1><p><a href="{url_for("main.list_posts")}">View All Posts</a></p>'
 
 @bp.route('/posts')
 def list_posts():
-    all_posts = Post.objects().only("title", "post_id")
-
+    all_posts = Post.objects().only('title', 'post_id')
     return render_template("list_posts.html", posts=all_posts)
 
 @bp.route('/posts/<string:post_id>')
