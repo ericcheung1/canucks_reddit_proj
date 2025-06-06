@@ -20,6 +20,7 @@ class Post(Document):
     post_id = StringField(required=True, unique=True)
     title = StringField(required=True)
     author = StringField(default="[deleted]")
+    score = IntField(default=0)
     url = URLField()
     utc_created = IntField()
 
@@ -31,6 +32,6 @@ class Post(Document):
             {"fields": ["post_id"], "unique": True},
             {"fields": ["title"]},
             {"fields": ["author"]},
-            {"fields": ["utc_created"]}
+            {"fields": ["utc_created"], "ordering": -1}
         ]
     }

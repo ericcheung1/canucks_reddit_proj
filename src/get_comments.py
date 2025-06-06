@@ -49,7 +49,7 @@ def fetch_comments(reddit, submission_id):
         # makes it easier to look up comment by comment id
         comment_map[comment.id] = comment_dict 
 
-        # if comment exists and is a reply
+        # if comment exists and is a top level comment
         # because replies have parent id prefixed with "t1_"
         if comment_dict and comment.parent_id.startswith("t3_"): 
             
