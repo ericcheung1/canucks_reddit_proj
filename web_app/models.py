@@ -32,6 +32,6 @@ class Post(Document):
             {"fields": ["post_id"], "unique": True},
             {"fields": ["title"]},
             {"fields": ["author"]},
-            {"fields": ["utc_created"], "ordering": -1}
+            {"fields": ["-utc_created"]}
         ]
     }
