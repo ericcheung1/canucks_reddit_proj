@@ -3,7 +3,11 @@ from authenticate import authenticate_reddit
 from datetime import datetime as dt, timedelta, timezone
 import pandas as pd
 
-project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if __name__ == "__main__":
+    project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    print(project_root)
+
+project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 print(project_root)
 
 reddit_instance = authenticate_reddit('config.ini')

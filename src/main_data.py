@@ -1,6 +1,6 @@
-from authenticate import authenticate_reddit, connect_mongodb
-from get_comments import fetch_comments
-from insert_into_db import insert_posts
+from reddit_pipeline.authenticate import authenticate_reddit, connect_mongodb
+from reddit_pipeline.get_comments import fetch_comments
+from reddit_pipeline.insert_into_db import insert_posts
 import pandas as pd
 import logging
 import time

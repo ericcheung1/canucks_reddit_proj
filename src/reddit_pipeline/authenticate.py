@@ -16,7 +16,7 @@ def authenticate_reddit(config_file):
     Returns:
         reddit_instance (praw.Reddit): A praw reddit instance.
     """
-    project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     config = configparser.ConfigParser()
     config.read(os.path.join(project_root, config_file))
     reddit_instance = praw.Reddit(
@@ -31,9 +31,13 @@ def authenticate_reddit(config_file):
     return reddit_instance
 
 def connect_mongodb(config_file):
-    project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     config = configparser.ConfigParser()
     config.read(os.path.join(project_root, config_file))
 
     client = MongoClient(config.get('MongoDB', 'server'))
     return client
+
+if __name__ == "__main__":
+    project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    print(project_root)
