@@ -18,7 +18,7 @@ Data is collected from the following sources:
 * **Reddit API:** Utilizing the PRAW (Python Reddit API Wrapper) library to access and retrieve comments from the r/canucks subreddit.
 * **Subreddit:** r/canucks (https://www.reddit.com/r/canucks/) - Specifically targeting post-game threads for the 2024-25 season.
 
-The scripts responsible for data collection is with the src/reddit_pipeline/ folder
+The scripts responsible for data collection is with the `src/reddit_pipeline/` folder
 
 ## Web Application
 
@@ -34,7 +34,8 @@ A Flask web application has been developed to present the collected Reddit posts
 * **Python:** The primary programming language.
 * **PRAW (Python Reddit API Wrapper):** For interacting with the Reddit API.
 * **Flask:** Web framework for building the application.
-* **MongoEngine:** Python Object-Document Mapper (ODM) for MongoDB.
+* **MongoEngine:** Python Object-Document Mapper (ODM) for MongoDB, used for defining and interacting with data schemas.
+* **PyMongo:** The official MongoDB driver for Python, handling direct database operations.
 * **HTML:** For the web application's frontend structure.
 * **NLTK (Natural Language Toolkit):** Specifically VADER (Valence Aware Dictionary and sEntiment Reasoner) for sentiment analysis (currently in progress).
 
