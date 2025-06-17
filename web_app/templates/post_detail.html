@@ -4,79 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ post.title }}</title>
-    <!--add a link to static CSS file here later -->
-    <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
-        div { max-width: 800px; margin: 20px auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px; background-color: #fff; }
-        h1, h2 { color: #333; }
-        a { color: #007bff; text-decoration: none; }
-        a:hover { text-decoration: underline; }
-
-        .comment-list {
-            list-style-type: none;
-            padding-left: 0;
-        }
-        .comment-item {
-            border-bottom: 1px dashed #eee;
-            padding: 10px 0;
-        }
-        .comment-item:last-child {
-            border-bottom: none;
-        }
-        .comment-level-1 {
-            background-color: #eeee;
-            padding: 8px;
-            border-left: 4px solid #bbbbbb;
-            margin-left: 20px;
-            border-radius: 4px;
-            margin-top: 5px;
-            margin-bottom: 5px;
-        }
-        .comment-level-2 {
-            background-color: #dddd;
-            padding: 6px;
-            border-left: 4px solid #9c9c9c;
-            margin-left: 40px;
-            border-radius: 4px;
-            margin-top: 5px;
-            margin-bottom: 5px;
-        }
-        .comment-level-3 {
-            background-color: #cccc;
-            padding: 4px;
-            border-left: 4px solid #b7b7b7;
-            margin-left: 60px;
-            border-radius: 4px;
-            margin-top: 5px;
-            margin-bottom: 5px;
-        }
-        .reply-list {
-            list-style-type: circle;
-            padding-left: 20px;
-            margin-top: 5px;
-        }
-        .reply-item {
-            background-color: #f9f9f9;
-            padding: 8px;
-            border-left: 3px solid #ccc;
-            margin-bottom: 5px;
-            border-radius: 4px;
-        }
-        .comment-author, .reply-author {
-            font-weight: bold;
-        }
-        .comment-meta, .reply-meta {
-            font-size: 0.9em;
-            color: #666;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='post_detail.css') }}">
 </head>
 <body>
-    <div style="max-width: 800px; margin: 20px auto; padding: 20px; border: 1px solid #000000; border-radius: 8px;">
+    <div>
         <h1>{{ post.title }}</h1>
         <p><strong>Author:</strong> {{ post.author }}</p>
         <p><strong>Time:</strong> {{post.utc_created }}</p> 
-        <p><strong>Number of Top Level Comments:</strong> {{post.comments | length }}</p>
+        <p><strong>Number of Comments:</strong> {{ post.total_bodies }}</p>
+
+        
+        <h2>Sentiment Scores: </h2>
+
+        <ul class="sentiment-box">
+            <li>
+                <strong>Averaged Vader Scores: </strong>
+                Positive Sentiment: <strong>{{ post.avg_pos | round(5) }}</strong>
+                Neutral Sentiment: <strong>{{ post.avg_neu | round(5) }}</strong>
+                Positive Sentiment: <strong>{{ post.avg_pos | round(5) }}</strong>
+                Compound Sentiment: <strong>{{ post.avg_compound | round(5) }}</strong>
+            
+            </li>
+        </ul>
+        
 
         <h2>Comments:</h2>
         
@@ -85,6 +35,11 @@
             {% for comment in comments %}
                 <li class="comment-item comment-level-{{ level }}">
                     <p><span class="comment-author">{{ comment.author or "[deleted]" }}:</span> {{ comment.body }}</p>
+                    <p><strong>Vader Scores: </strong>
+                        Negative Sentiment: <strong>{{ comment.neg_sentiment | round(5) }}</strong> 
+                        Neutral Sentiment: <strong>{{ comment.neu_sentiment | round(5) }}</strong> 
+                        Positive Sentiment: <strong>{{ comment.pos_sentiment | round(5) }}</strong> 
+                        Compound Sentiment: <strong>{{ comment.compound_sentiment | round(5) }}</strong></p>
 
                     {% if comment.replies %}
                         {{ render_comments(comment.replies, level + 1) }}
