@@ -7,10 +7,15 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='post_detail.css') }}">
 </head>
 <body>
+    <header class="project-header">
+        <h1>Canucks Reddit Sentiment Dashboard</h1>
+        <ul>
+            <li><a href="{{ url_for('main.list_posts') }}">All Posts</a></li>
+            <li><a href="{{ url_for('main.index') }}">Home</a></li>
+        </ul>
+    </header>
     <div>
         <h1>{{ post.title }}</h1>
-        <p><strong>Author:</strong> {{ post.author }}</p>
-        <p><strong>Time:</strong> {{post.utc_created }}</p> 
         <p><strong>Number of Comments:</strong> {{ post.total_bodies }}</p>
 
         
@@ -19,7 +24,7 @@
         <ul class="sentiment-box">
             <li>
                 <strong>Averaged Vader Scores: </strong>
-                Positive Sentiment: <strong>{{ post.avg_pos | round(5) }}</strong>
+                Negative Sentiment: <strong>{{ post.avg_neg | round(5) }}</strong>
                 Neutral Sentiment: <strong>{{ post.avg_neu | round(5) }}</strong>
                 Positive Sentiment: <strong>{{ post.avg_pos | round(5) }}</strong>
                 Compound Sentiment: <strong>{{ post.avg_compound | round(5) }}</strong>

@@ -4,9 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Canucks Reddit Posts</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='list_posts.css') }}">
 </head>
 <body>
-    <h1>All Canucks Reddit Posts</h1>
+    <header class="project-header">
+        <h1>Canucks Reddit Sentiment Dashboard</h1>
+        <ul>
+            <li><a href="{{ url_for('main.index') }}">Home</a></li>
+        </ul>
+    </header>
     <ul>
         {% for post in posts %}
             <li>
