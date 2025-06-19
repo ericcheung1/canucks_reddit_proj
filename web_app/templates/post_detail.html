@@ -17,8 +17,10 @@
     <div>
         <h1>{{ post.title }}</h1>
         <p><strong>Number of Comments:</strong> {{ post.total_bodies }}</p>
+        <p><strong>Score:</strong> 
+            <a href="https://www.google.com/search?q={{ clean_title|urlencode }}" target="_blank", rel="noopener noreferrer">View Score</a>
+        </p>
 
-        
         <h2>Sentiment Scores: </h2>
 
         <ul class="sentiment-box">

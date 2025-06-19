@@ -82,6 +82,7 @@ a:hover {
 }
 .comment-item:last-child {
     border-bottom: none;
+    overflow-wrap: break-word;
 }
 .comment-level-1 {
     background-color: #eeee;
