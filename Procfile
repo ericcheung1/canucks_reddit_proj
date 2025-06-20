@@ -1,1 +1,1 @@
-web: gunicorn "web_app:create_app()" --callable app
+web: gunicorn web_app:app
