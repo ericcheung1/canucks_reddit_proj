@@ -5,7 +5,7 @@ bp = Blueprint("main", __name__)
 
 @bp.route('/')
 def index():
-    return f'<h1>Welcome to the Canucks Reddit Data!</h1><p><a href="{url_for("main.list_posts")}">View All Posts</a></p>'
+    return f'<h1>Welcome to Canucks Sentiment Analysis! Home Page Coming Soon! Checkout the Posts Below!</h1><p><a href="{url_for("main.list_posts")}">View All Posts</a></p>'
 
 @bp.route('/posts')
 def list_posts():
@@ -20,4 +20,4 @@ def post_detail(post_id):
     if post:
         return render_template("post_detail.html", post=post, clean_title=post_title)
     else:
-        return "Post Not Foun!", 404
+        return "Post Not Found!", 404
