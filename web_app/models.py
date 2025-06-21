@@ -8,6 +8,8 @@ class Reply(EmbeddedDocument):
     neg_sentiment = FloatField()
     neu_sentiment = FloatField()
     pos_sentiment = FloatField()
+    distilbert_sentiment = StringField()
+    distilber_confidence = FloatField()
     utc_created = IntField()
 
     replies = ListField(EmbeddedDocumentField("Reply"))
@@ -20,6 +22,8 @@ class Comment(EmbeddedDocument):
     neg_sentiment = FloatField()
     neu_sentiment = FloatField()
     pos_sentiment = FloatField()
+    distilbert_sentiment = StringField()
+    distilber_confidence = FloatField()
     utc_created = IntField()
 
     replies = ListField(EmbeddedDocumentField(Reply))
@@ -36,6 +40,9 @@ class Post(Document):
     neg_count = IntField()
     neu_count = IntField()
     pos_count = IntField()
+    distilbert_neg_count = IntField()
+    distilbert_pos_count = IntField()
+    distilbert_avg_confidence = FloatField()
     total_bodies = IntField()
     url = URLField()
     utc_created = IntField()

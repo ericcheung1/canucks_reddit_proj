@@ -10,14 +10,14 @@ if project_root not in sys.path:
     sys.path.append(project_root)
 
 from web_app.models import Post, Comment, Reply
-from vader_sentiment_utils import calculate_vader_scores
+from src.sentiment_utils.vader_sentiment_utils import calculate_vader_scores
 
 def main():
 
     config = configparser.ConfigParser()
     config.read(os.path.join(project_root, "config.ini"))
 
-    mongo_host = config.get("MongoDB", "server")
+    mongo_host = config.get("MongoDB", "uri")
     mongo_db_name = config.get("MongoDB", "database")
 
     connect(db=mongo_db_name, host=mongo_host)
@@ -69,7 +69,7 @@ def main():
         
         calculate_individual_score(post.comments)
 
-        post.save()
+        # post.save()
         updated_count += 1
 
     disconnect()

@@ -6,7 +6,7 @@ load_dotenv()
 app = create_app()
 
 DEBUG_ENV_VAR = os.getenv("FLASK_DEBUG")
-print(DEBUG_ENV_VAR)
+print(f"Debug Config: {DEBUG_ENV_VAR}")
 if DEBUG_ENV_VAR and DEBUG_ENV_VAR.lower() in ("true", "1", "t", "y", "yes"):
     app.config["DEBUG"] = True
     print("Flask DEBUG is ON.")
