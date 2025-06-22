@@ -17,14 +17,19 @@ def flatten_list(Game_post):
         comment_helper(Game_post.comments, all_text_bodies)
         return all_text_bodies
 
-def distilbert_analyzer(all_text_bodies, sentiment_analyzer):
+def calculate_distilbert_scores(Game_post, distilbert_analyzer):
 
     scores_dict = {
         "sentiment_label": [],
         "confidence_score": []
         }
 
+    all_text_bodies = flatten_list(Game_post)
 
-sentiment_analyzer = pipeline("sentiment-analysis", model="distilbert-base-uncased-finetuned-sst-2-english")
-result = sentiment_analyzer("The dedication of these guys is insane. It took me three weeks and two reminders to only finish my resume")
-print(result)
+    for body in all_text_bodies:
+        distilbert_result = distilbert_analyzer(body)
+        scores_dict["sentiment_label"].append(distilbert_result[0]["label"])
+        scores_dict["confidence_score"].append(distilbert_result[0]["score"])
+
+
+    return scores_dict

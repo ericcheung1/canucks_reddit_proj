@@ -1,5 +1,7 @@
-test*.py
+test_2.py
+test.py
 *.ini
+test_flask.py
 test_ids.csv
 
 # Byte-compiled / optimized / DLL files
