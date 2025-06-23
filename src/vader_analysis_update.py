@@ -1,6 +1,5 @@
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
-from mongoengine import connect, disconnect
-import configparser
+from mongoengine import disconnect
 import os
 import sys
 
@@ -13,17 +12,6 @@ from web_app.models import Post, Comment, Reply
 from src.sentiment_utils.vader_sentiment_utils import calculate_vader_scores
 
 def main():
-
-    config = configparser.ConfigParser()
-    config.read(os.path.join(project_root, "config.ini"))
-
-    mongo_host = config.get("MongoDB", "uri")
-    mongo_db_name = config.get("MongoDB", "database")
-
-    connect(db=mongo_db_name, host=mongo_host)
-
-    print(f"Connect to MongoDB and using {mongo_db_name} database.")
-
     all_posts = Post.objects() # type: ignore
     total_posts = all_posts.count()
     print(f"There are {total_posts} posts in the database.")

@@ -28,7 +28,9 @@ def create_app():
     app.config["MONGODB_SETTINGS"] = {
         "host": Mongo_uri,
         "db": "canucks_reddit_data",
-        "alias": "default"
+        "alias": "default",
+        "uuidRepresentation": "standard"
+
     }
 
     connect(**app.config["MONGODB_SETTINGS"])

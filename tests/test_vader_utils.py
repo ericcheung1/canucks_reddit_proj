@@ -1,3 +1,11 @@
+import os
+import sys
+
+project_root = os.path.dirname(os.path.dirname(__file__))
+print(project_root)
+if project_root not in sys.path:
+    sys.path.append(project_root)
+
 from src.sentiment_utils.vader_sentiment_utils import flatten_list, calculate_vader_scores
 import pytest
 
@@ -29,7 +37,12 @@ def test_flatten_list_with_comment(mock_post_with_comments):
 
     assert len(flattened_list) == 5
 
-def test_flatten_list_with_blanks(mock_post_with_blank_comments, vader_sia):
-    flatten_list = calculate_vader_scores(mock_post_with_blank_comments, vader_sia)
+def test_flatten_list_with_blanks(mock_post_with_blank_comments):
+    flattened_list = flatten_list(mock_post_with_blank_comments)
 
-    assert len(flatten_list) == 0
+    assert len(flattened_list) == 0
+
+def test_flatten_list_with_deleted(mock_post_with_deleted_comments):
+    flattened_list = flatten_list(mock_post_with_deleted_comments)
+
+    assert len(flattened_list) == 0

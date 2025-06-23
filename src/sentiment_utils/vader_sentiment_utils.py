@@ -1,6 +1,3 @@
-from web_app.models import Post, Comment, Reply
-from nltk.sentiment.vader import SentimentIntensityAnalyzer
-
 def comment_helper(comment_or_reply, all_bodies):
     for item in comment_or_reply:
         if item.body and item.body != "[deleted]":
