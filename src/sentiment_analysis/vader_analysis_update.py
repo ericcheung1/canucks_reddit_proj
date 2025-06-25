@@ -3,7 +3,7 @@ from mongoengine import disconnect
 import os
 import sys
 
-project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 print(project_root)
 if project_root not in sys.path:
     sys.path.append(project_root)

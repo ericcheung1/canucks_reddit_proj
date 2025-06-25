@@ -1,10 +1,9 @@
-from web_app.models import Post, Comment, Reply
 from transformers import pipeline # type: ignore
 
 def comment_helper(comment_or_reply, all_bodies):
     for item in comment_or_reply:
         if item.body and item.body != "[deleted]":
-            all_bodies.append(item.body)
+            all_bodies.append({"comment_id": item.comment_id, "body": item.body})
         if item.replies:
             comment_helper(item.replies, all_bodies)
 
