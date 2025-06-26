@@ -12,23 +12,25 @@ def flatten_list(Game_post):
     if not Game_post:
         return []
     else:
-        all_text_bodies = []
-        comment_helper(Game_post.comments, all_text_bodies)
-        return all_text_bodies
+        comment_list = []
+        comment_helper(Game_post.comments, comment_list)
+        return comment_list
 
 def calculate_distilbert_scores(Game_post, distilbert_analyzer):
 
     scores_dict = {
         "sentiment_label": [],
-        "confidence_score": []
+        "confidence_score": [],
+        "comment_id": []
         }
 
-    all_text_bodies = flatten_list(Game_post)
+    comment_list = flatten_list(Game_post)
 
-    for body in all_text_bodies:
-        distilbert_result = distilbert_analyzer(body)
+    for comment in comment_list:
+        distilbert_result = distilbert_analyzer(comment["body"])
         scores_dict["sentiment_label"].append(distilbert_result[0]["label"])
         scores_dict["confidence_score"].append(distilbert_result[0]["score"])
+        scores_dict["comment_id"].append(comment["comment_id"])
 
 
     return scores_dict
