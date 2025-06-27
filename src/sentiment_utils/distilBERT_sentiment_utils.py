@@ -9,7 +9,7 @@ def comment_helper(comment_or_reply, all_bodies):
 
 
 def flatten_list(Game_post):
-    if not Game_post:
+    if not Game_post or not Game_post.comments:
         return []
     else:
         comment_list = []
@@ -24,13 +24,23 @@ def calculate_distilbert_scores(Game_post, distilbert_analyzer):
         "comment_id": []
         }
 
-    comment_list = flatten_list(Game_post)
+    comment_items = flatten_list(Game_post)
 
-    for comment in comment_list:
-        distilbert_result = distilbert_analyzer(comment["body"])
-        scores_dict["sentiment_label"].append(distilbert_result[0]["label"])
-        scores_dict["confidence_score"].append(distilbert_result[0]["score"])
-        scores_dict["comment_id"].append(comment["comment_id"])
+    comment_bodies = [item["body"] for item in comment_items]
+    comment_ids = [item["comment_id"] for item in comment_items]
 
+    results_list = []
 
-    return scores_dict
+    if not comment_bodies:
+        return results_list
+
+    distilbert_results = distilbert_analyzer(comment_bodies)
+
+    for i, value in enumerate(distilbert_results):
+        results_list.append({
+            "comment_id": comment_ids[i],
+            "sentiment_label": value["label"],
+            "confidence_score": value["score"]
+        })
+
+    return results_list

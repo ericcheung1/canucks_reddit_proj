@@ -10,29 +10,27 @@ from src.sentiment_utils.distilBERT_sentiment_utils import calculate_distilbert_
 import pytest
 
 def test_calc_distilbert_with_comments(mock_post_with_comments, distilbert_pipeline):
-    score_dict = calculate_distilbert_scores(mock_post_with_comments, distilbert_pipeline)
+    score_list = calculate_distilbert_scores(mock_post_with_comments, distilbert_pipeline)
 
-    assert len(score_dict["sentiment_label"]) == 5
-    assert score_dict["confidence_score"][0] > 0.80
-    assert score_dict["comment_id"][0] == "j1j4h"
-    assert score_dict["comment_id"][1] == "abc12"
-    assert score_dict["comment_id"][2] == "h12bb4"
-    assert score_dict["comment_id"][3] == "h5h3b"
-    assert score_dict["comment_id"][4] == "jg3g1"
+    assert len(score_list) == 5
+    assert score_list[0]["confidence_score"] > 0.80
+    assert score_list[0]["comment_id"] == "j1j4h"
+    assert score_list[1]["comment_id"] == "abc12"
+    assert score_list[2]["comment_id"] == "h12bb4"
+    assert score_list[3]["comment_id"] == "h5h3b"
+    assert score_list[4]["comment_id"] == "jg3g1"
 
 def test_calc_distilbert_with_blanks(mock_post_with_blank_comments, distilbert_pipeline):
-    score_dict = calculate_distilbert_scores(mock_post_with_blank_comments, distilbert_pipeline)
+    score_list = calculate_distilbert_scores(mock_post_with_blank_comments, distilbert_pipeline)
 
-    assert len(score_dict["sentiment_label"]) == 0
-    assert score_dict["confidence_score"] == []
-    assert score_dict["comment_id"] == []
+    assert len(score_list) == 0
+    assert score_list == []
 
 def test_calc_distilbert_with_deleted(mock_post_with_deleted_comments, distilbert_pipeline):
-    score_dict = calculate_distilbert_scores(mock_post_with_deleted_comments, distilbert_pipeline)
+    score_list = calculate_distilbert_scores(mock_post_with_deleted_comments, distilbert_pipeline)
 
-    assert len(score_dict["sentiment_label"]) == 0
-    assert score_dict["confidence_score"] == []
-    assert score_dict["comment_id"] == []
+    assert len(score_list) == 0
+    assert score_list == []
 
 def test_flatten_list_with_comments(mock_post_with_comments):
     all_text_bodies = flatten_list(mock_post_with_comments)
