@@ -27,7 +27,7 @@ def main():
     updated_count = 0
 
     for post in all_posts:
-        print(f"Processing {processed_count + 1}/{total_posts} posts.")
+        print(f"\nProcessing {processed_count + 1}/{total_posts} posts.")
         sentiment_result = calculate_distilbert_scores(post, distilbert_pipeline)
 
         if not sentiment_result:
@@ -46,8 +46,6 @@ def main():
             item["comment_id"]: item
             for item in sentiment_result
             }
-        
-        # print(sentiment_result_by_id)
 
         def update_sentiment_helper(item_obj, result_map):
             if hasattr(item_obj, "comment_id") and item_obj.comment_id in result_map:
