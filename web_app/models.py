@@ -23,7 +23,7 @@ class Comment(EmbeddedDocument):
     neu_sentiment = FloatField()
     pos_sentiment = FloatField()
     distilbert_sentiment = StringField()
-    distilber_confidence = FloatField()
+    distilbert_confidence = FloatField()
     utc_created = IntField()
 
     replies = ListField(EmbeddedDocumentField(Reply))

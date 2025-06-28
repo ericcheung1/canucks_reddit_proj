@@ -11,7 +11,7 @@ import pytest
 
 def test_calc_distilbert_with_comments(mock_post_with_comments, distilbert_pipeline):
     score_list = calculate_distilbert_scores(mock_post_with_comments, distilbert_pipeline)
-
+    print(score_list)
     assert len(score_list) == 5
     assert score_list[0]["confidence_score"] > 0.80
     assert score_list[0]["comment_id"] == "j1j4h"

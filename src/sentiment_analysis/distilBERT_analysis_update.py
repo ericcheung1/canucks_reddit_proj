@@ -7,6 +7,7 @@ print(project_root)
 if project_root not in sys.path:
     sys.path.append(project_root)
 
+from collections import Counter
 from web_app.models import Post, Comment, Reply
 from transformers import pipeline # type: ignore 
 from src.sentiment_utils.distilBERT_sentiment_utils import calculate_distilbert_scores
@@ -22,7 +23,6 @@ def main():
         truncation=True
         )
 
-
     processed_count = 0
     updated_count = 0
 
@@ -35,6 +35,13 @@ def main():
             processed_count += 1
             continue
 
+        labels = [items["sentiment_label"] for items in sentiment_result]
+        label_count = Counter(labels)
+        sum_of_score = sum(items["confidence_score"] for items in sentiment_result)
+        average_confidence_score = sum_of_score/len(sentiment_result)
+        print(f"Label Counts: {label_count}")
+        print(f"Average Confidence: {average_confidence_score}")
+
         sentiment_result_by_id = {
             item["comment_id"]: item
             for item in sentiment_result
@@ -46,7 +53,7 @@ def main():
             if hasattr(item_obj, "comment_id") and item_obj.comment_id in result_map:
                 result = result_map[item_obj.comment_id]
                 item_obj.distilbert_sentiment = result["sentiment_label"]
-                item_obj.distilber_confidence = result["confidence_score"]
+                item_obj.distilbert_confidence = result["confidence_score"]
                 return True
             return False
         
@@ -60,6 +67,9 @@ def main():
                         modified = True
             return modified
         
+        post.distilbert_neg_count = label_count.get("NEGATIVE", 0)
+        post.distilbert_pos_count = label_count.get("POSITIVE", 0)
+        post.distilbert_avg_confidence = average_confidence_score
         post_modified = traverse_and_update(post.comments, sentiment_result_by_id)
 
         if post_modified:
