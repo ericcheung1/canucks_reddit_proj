@@ -10,6 +10,25 @@ div {
     max-width: 1200px; 
     margin: 20px auto; 
     padding: 20px; 
+    /* border: 1px solid #000000; 
+    border-radius: 8px;  */
+    background-color: #fff; 
+}
+
+.sentiment-div { 
+    max-width: 1200px; 
+    margin: 20px auto; 
+    padding: 0px; 
+    border: 1px solid #000000; 
+    border-radius: 8px; 
+    background-color: #fff; 
+}
+
+.comment-div { 
+    list-style-type: none;
+    max-width: 1200px; 
+    margin: 20px auto; 
+    padding: 20px; 
     border: 1px solid #000000; 
     border-radius: 8px; 
     background-color: #fff; 
@@ -66,9 +85,15 @@ a:hover {
 }
 
 .sentiment-box {
-    list-style: none;
-    padding-left: 0;
-    padding: 10px;
+    list-style-type: none;
+    padding-left: 10px;
+    margin: 0px;
+}
+
+.sentiment-box ul {
+    list-style-type: none;
+    padding-left: 10px;
+    margin: 0px;
 }
 
 .comment-list {

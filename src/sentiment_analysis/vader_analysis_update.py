@@ -36,6 +36,13 @@ def main():
         post.pos_count = scores["Total_Pos"]
         post.total_bodies = scores["Total_Comments"]
 
+        if scores["Average_Compound"] >= 0.05:
+            post.vader_post_classification = "POSITIVE"
+        elif scores["Average_Compound"] <= -0.05:
+            post.vader_post_classification = "NEGATIVE"
+        elif scores["Average_Compound"] < 0.05 and scores["Average_Compound"] > -0.05:
+            post.vader_post_classification = "NEUTRAL"
+
 
         def calculate_individual_score(game_post_comments):
             for comment in game_post_comments:
@@ -46,6 +53,13 @@ def main():
                     comment.pos_sentiment = score_for_individual["pos"]
                     comment.neu_sentiment = score_for_individual["neu"]
                     comment.compound_sentiment = score_for_individual["compound"]
+                    if score_for_individual["compound"] >= 0.05:
+                        comment.vader_classification = "POSITIVE"
+                    elif score_for_individual["compound"] <= -0.05:
+                        comment.vader_classification = "NEGATIVE"
+                    elif score_for_individual["compound"] < 0.05 and score_for_individual["compound"] > -0.05:
+                        comment.vader_classification = "NEUTRAL"
+
                 else:
                     comment.neg_sentiment = 0.0
                     comment.pos_sentiment = 0.0
@@ -57,7 +71,7 @@ def main():
         
         calculate_individual_score(post.comments)
 
-        # post.save()
+        post.save()
         updated_count += 1
 
     disconnect()

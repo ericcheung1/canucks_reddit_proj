@@ -1,0 +1,10 @@
+<p><strong>VADER</strong> (Valence Aware Dictionary and sEntiment Reasoner) is a sentiment analysis tool designed for short, informal text like social media posts or reviews. It is part of <strong>NLTK</strong> (Natural Language Toolkit), a popular Python library for natural language processing.</p>
+
+<p>VADER is <em>rule-based</em>, meaning it uses a predefined set of lexical rules and a sentiment dictionary—rather than machine learning—to evaluate text. It accounts for punctuation, capitalization, degree modifiers (e.g., "very"), and negations. For each text, it returns four scores: <strong>positive</strong>, <strong>neutral</strong>, and <strong>negative</strong> (indicating the proportion of sentiment in each direction), and a <strong>compound score</strong> from -1 to +1 summarizing overall sentiment.</p>
+
+<p>Sentiment classification is based on the compound score using these standard thresholds:</p>
+<ul>
+    <li><strong>Compound ≥ 0.05</strong>: Positive</li>
+    <li><strong>Compound ≤ -0.05</strong>: Negative</li>
+    <li><strong>Between -0.05 and 0.05</strong>: Neutral</li>
+</ul>

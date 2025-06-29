@@ -70,9 +70,18 @@ def main():
         post.distilbert_avg_confidence = average_confidence_score
         post_modified = traverse_and_update(post.comments, sentiment_result_by_id)
 
+        if label_count.get("NEGATIVE", 0) > label_count.get("POSITIVE", 0):
+            post.distilbert_post_classification = "NEGATIVE"
+        elif label_count.get("NEGATIVE", 0) < label_count.get("POSITIVE", 0):
+            post.distilbert_post_classification = "POSITIVE"
+        else:
+            post.distilbert_post_classification = "NEUTRAL"
+
+
         if post_modified:
             # post.save()
             updated_count += 1
+            print(f"Overall Post Sentiment: {post.distilbert_post_classification}")
             print(f"Updated sentiment for post: {post.post_id}, {updated_count}/{total_posts}")
         else:
             print(f"No sentiment update for post: {post.post_id}")

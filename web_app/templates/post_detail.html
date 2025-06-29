@@ -3,50 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ post.title }}</title>
+    <title>Canucks Sentiment: {{ clean_title }}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='post_detail.css') }}">
 </head>
 <body>
     <header class="project-header">
-        <h1>Canucks Reddit Sentiment Dashboard</h1>
+        <h1>Canucks Sentiment Analysis</h1>
         <ul>
             <li><a href="{{ url_for('main.list_posts') }}">All Posts</a></li>
             <li><a href="{{ url_for('main.index') }}">Home</a></li>
         </ul>
     </header>
     <div>
-        <h1>{{ post.title }}</h1>
-        <p><strong>Number of Comments:</strong> {{ post.total_bodies }}</p>
+        <h1>{{ clean_title }}</h1>
+
         <p><strong>Score:</strong> 
             <a href="https://www.google.com/search?q={{ clean_title|urlencode }}" target="_blank", rel="noopener noreferrer">View Score</a>
         </p>
 
-        <h2>Sentiment Scores: </h2>
+        <h3>Sentiment Analysis: </h3>
 
+        <div class="sentiment-div">
+        <div>
+            <h3>Scores and Classification: Overall Results For Post</h3>
         <ul class="sentiment-box">
             <li>
-                <strong>Averaged Vader Scores: </strong>
-                Negative Sentiment: <strong>{{ post.avg_neg | round(5) }}</strong>
-                Neutral Sentiment: <strong>{{ post.avg_neu | round(5) }}</strong>
-                Positive Sentiment: <strong>{{ post.avg_pos | round(5) }}</strong>
-                Compound Sentiment: <strong>{{ post.avg_compound | round(5) }}</strong>
+                <p>
+                    <strong>VADER Sentiment Results: </strong>
+                    Classification: <strong>{{ post.vader_post_classification }}</strong> |
+                    Number of Positive: <strong>{{ post.pos_count }}</strong> |
+                    Number of Neutral: <strong>{{ post.neu_count }}</strong> |
+                    Number of Negative: <strong>{{ post.neg_count }}</strong> |
+                </p>
+                <p>
+                    <strong>VADER Scores:</strong>
+                    Mean Compound: <strong>{{ post.avg_compound | round(5) }}</strong> |
+                    Mean Positive: <strong>{{ post.avg_pos | round(5) }}</strong> | 
+                    Mean Neutral: <strong>{{ post.avg_neu | round(5) }}</strong> |
+                    Mean Negative: <strong>{{ post.avg_neg | round(5) }}</strong> |
+                </p>
             
             </li>
+            <li>
+                <p>
+                    <strong>DistilBERT Sentiment Results: </strong> 
+                    Classification: <strong>{{ post.distilbert_post_classification }}</strong>
+                    Number of Positive: <strong>{{ post.distilbert_pos_count }}</strong> |
+                    Number of Negative: <strong>{{ post.distilbert_neg_count }}</strong> |
+                </p>
+            </li>
+            <li>
+                <p>
+                    <strong>DistilBERT Score:</strong>
+                    Mean Confidence Score: <strong>{{ post.distilbert_avg_confidence }}</strong> |
+                </p>
+            </li>
         </ul>
-        
+        </div>
+        <div>
+            <h3>Sentiment Models: </h3>
+            <ul class="sentiment-box">
+                <li>
+                    <p>
+                    <strong>VADER</strong> sentiment analysis returns four scores for each text: <strong>positive</strong>, <strong>neutral</strong>, 
+                    <strong>negative</strong>, and <strong>compound</strong>. The positive, neutral, and negative scores represent the 
+                    proportion of the text that falls into each sentiment category. The <strong>compound score</strong> is a normalized 
+                    value ranging from <strong>-1</strong> (most negative) to <strong>+1</strong> (most positive) that reflects the overall 
+                    sentiment of the text. To interpret the compound score: values <strong>≥ 0.05</strong> are considered <strong>positive</strong>, 
+                    values <strong>≤ -0.05</strong> are considered <strong>negative</strong>, and values <strong>between -0.05 and 0.05</strong> are 
+                    considered <strong>neutral</strong>.
+                    </p>
 
-        <h2>Comments:</h2>
+                </li>
+                <li>
+                    <p>
+                        <strong>DistilBERT</strong> sentiment analysis models classify text into categories like <strong>positive</strong> or <strong>negative</strong>, 
+                        and assign a <strong>confidence score</strong> to each prediction. The model outputs a probability for each class, and the class 
+                        with the highest probability is selected as the predicted sentiment. The <strong>confidence score</strong> reflects how certain 
+                        the model is about its prediction, ranging from <strong>0</strong> (no confidence) to <strong>1</strong> (full confidence). For example, 
+                        if a text is labeled <strong>positive</strong> with a confidence of <strong>0.92</strong>, it means the model is 92% confident that the 
+                        sentiment is positive. These scores help assess not just the predicted sentiment, but also how reliable that prediction is.
+                    </p>
+                </li>
+            </ul>
+        </div>
+        </div>
+
+        <h3>Comments: Total {{ post.total_bodies }}</h3>
         
+        <div class="comment-div">
         {% macro render_comments(comments, level) %}
             <ul class="comment-list">
             {% for comment in comments %}
                 <li class="comment-item comment-level-{{ level }}">
                     <p><span class="comment-author">{{ comment.author or "[deleted]" }}:</span> {{ comment.body }}</p>
-                    <p><strong>Vader Scores: </strong>
-                        Negative Sentiment: <strong>{{ comment.neg_sentiment | round(5) }}</strong> 
-                        Neutral Sentiment: <strong>{{ comment.neu_sentiment | round(5) }}</strong> 
-                        Positive Sentiment: <strong>{{ comment.pos_sentiment | round(5) }}</strong> 
-                        Compound Sentiment: <strong>{{ comment.compound_sentiment | round(5) }}</strong></p>
+
+                    <div class="comment-item sentiment-box">
+                        <ul>
+                            <li>
+                                <p>
+                                    <strong>VADER Analysis:</strong>
+                                    Classification: <strong>{{ comment.vader_classification }}</strong> | 
+                                    Compound: <strong>{{ comment.compound_sentiment | round(5) }}</strong> | 
+                                    Positive: <strong>{{ comment.pos_sentiment | round(5) }}</strong> | 
+                                    Neutral: <strong>{{ comment.neu_sentiment | round(5) }}</strong> | 
+                                    Negative: <strong>{{ comment.neg_sentiment | round(5) }}</strong> | 
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    <strong>DistilBERT Analysis:</strong>
+                                    Classification: <strong>{{ comment.distilbert_sentiment }}</strong> |
+                                    Confidence Score: <strong>{{ comment.distilbert_confidence }}</strong> |
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
 
                     {% if comment.replies %}
                         {{ render_comments(comment.replies, level + 1) }}
@@ -63,6 +135,7 @@
         {% endif %}
 
         <p style="margin-top: 20px;"><a href="{{ url_for('main.list_posts') }}">Back to All Posts</a></p>
+        </div>
     </div>
 </body>
 </html>
