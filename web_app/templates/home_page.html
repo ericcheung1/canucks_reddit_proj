@@ -1,10 +1,84 @@
-<p><strong>VADER</strong> (Valence Aware Dictionary and sEntiment Reasoner) is a sentiment analysis tool designed for short, informal text like social media posts or reviews. It is part of <strong>NLTK</strong> (Natural Language Toolkit), a popular Python library for natural language processing.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canucks Sentiment</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='home_page.css') }}">
+</head>
+<body>
+    <header class="project-header">
+        <h1>Canucks Sentiment Analysis</h1>
+        <ul>
+            <li><a href="{{ url_for('main.list_posts') }}">All Posts</a></li>
+        </ul>
+    </header>
+    <div>
+        <h2>Welcome to Canucks Sentiment Analysis! Checkout the analysis by clicking the All Post button above.</h2>
+    </div>
+    <div>
+        <h2>
+            What this is and why I built it: 
+        </h2>
+        <p>
+            This app analyzes post-game threads from the r/canucks subreddit to understand how fans react after each game. It currently uses two 
+            different sentiment analysis models to classify the sentiment of each comment, as well as the overall tone of each thread.
+            The All Posts page contains 62 post-game threads from the 2024–25 season, each with its own sentiment breakdown. Every comment is displayed alongside 
+            its sentiment classification, giving a picture of how fans responded after each game.
+        </p>
+        <p>
+            I became invested in the Vancouver Canucks again during the 2023–24 season after their strong start to the regular season and have been 
+            following them since. Having lived in BC all my life, I never fully got into the team after what happened in 2011. But ever since two 
+            easons ago, I’ve made it a habit to catch every game on TV if I can and became a frequent visitor of the r/canucks fan subreddit.
+            Since the team was doing so well in the 2023–24 season, I noticed that many comments and posts were positive. But starting with the 
+            2024–25 season and continuing throughout, I began to notice a trend of negative comments and posts on the subreddit. So I thought there was 
+            potential to combine my data science skills and Canucks fandom to create this project.
+        </p>
+    </div>
+    <div>
+        <h2>Sentiment Analysis Models Used:</h2>
+        <ul>
+            <li>
+                <p>
+                    <strong>VADER</strong> (Valence Aware Dictionary and sEntiment Reasoner) is a sentiment analysis tool designed for short, 
+                    informal text like social media posts or reviews. It is part of <strong>NLTK</strong> (Natural Language Toolkit), a popular 
+                    Python library for natural language processing.
+                </p>
 
-<p>VADER is <em>rule-based</em>, meaning it uses a predefined set of lexical rules and a sentiment dictionary—rather than machine learning—to evaluate text. It accounts for punctuation, capitalization, degree modifiers (e.g., "very"), and negations. For each text, it returns four scores: <strong>positive</strong>, <strong>neutral</strong>, and <strong>negative</strong> (indicating the proportion of sentiment in each direction), and a <strong>compound score</strong> from -1 to +1 summarizing overall sentiment.</p>
+                <p>
+                    VADER is <em>rule-based</em>, meaning it uses a predefined set of lexical rules and a sentiment dictionary—rather than machine learning—to 
+                    evaluate text. It accounts for punctuation, capitalization, degree modifiers (e.g., "very"), and negations. For each text, it returns four 
+                    scores: <strong>positive</strong>, <strong>neutral</strong>, and <strong>negative</strong> (indicating the proportion of sentiment in each direction), 
+                    and a <strong>compound score</strong> from -1 to +1 summarizing overall sentiment.
+                </p>
 
-<p>Sentiment classification is based on the compound score using these standard thresholds:</p>
-<ul>
-    <li><strong>Compound ≥ 0.05</strong>: Positive</li>
-    <li><strong>Compound ≤ -0.05</strong>: Negative</li>
-    <li><strong>Between -0.05 and 0.05</strong>: Neutral</li>
-</ul>
+                <p>
+                    Sentiment classification is based on the compound score using these standard thresholds:
+                </p>
+
+                    <ul>
+                        <li><strong>Compound ≥ 0.05</strong>: Positive</li>
+                        <li><strong>Compound ≤ -0.05</strong>: Negative</li>
+                        <li><strong>Between -0.05 and 0.05</strong>: Neutral</li>
+                    </ul>
+            </li>
+        </ul>
+    </div>
+
+
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

@@ -25,7 +25,7 @@
 
         <div class="sentiment-div">
         <div>
-            <h3>Scores and Classification: Overall Results For Post</h3>
+            <h3>Classification and Scores: Overall Results For Post</h3>
         <ul class="sentiment-box">
             <li>
                 <p>
@@ -56,8 +56,8 @@
                     {% elif post.distilbert_post_classification == 'NEGATIVE' %}NEG-SENTIMENT
                     {% elif post.distilbert_post_classification == 'NEUTRAL' %}NEU-SENTIMENT{% endif %}">
                         {{ post.distilbert_post_classification }}</span> ||
-                    Number of Positive: <strong>{{ post.distilbert_pos_count }}</strong> ||
-                    Number of Negative: <strong>{{ post.distilbert_neg_count }}</strong> ||
+                    Positive Comments: <strong>{{ post.distilbert_pos_count }}</strong> ||
+                    Negative Comments: <strong>{{ post.distilbert_neg_count }}</strong> ||
                 </p>
             </li>
             <li>
@@ -69,28 +69,25 @@
         </ul>
         </div>
         <div>
-            <h3>Sentiment Models: </h3>
+            <h3>Models Used: </h3>
             <ul class="sentiment-box">
                 <li>
                     <p>
-                        <strong>VADER</strong> sentiment analysis returns four scores for each text: <strong>positive</strong>, <strong>neutral</strong>, 
-                        <strong>negative</strong>, and <strong>compound</strong>. The positive, neutral, and negative scores represent the 
-                        proportion of the text that falls into each sentiment category. The <strong>compound score</strong> is a normalized 
-                        value ranging from <strong>-1</strong> (most negative) to <strong>+1</strong> (most positive) that reflects the overall 
-                        sentiment of the text. To interpret the compound score: values <strong>≥ 0.05</strong> are considered <strong>positive</strong>, 
-                        values <strong>≤ -0.05</strong> are considered <strong>negative</strong>, and values <strong>between -0.05 and 0.05</strong> are 
-                        considered <strong>neutral</strong>.
+                        <strong>VADER</strong> is a rules-based model that calculates sentiment results using a large dictionary of words with predefined 
+                        sentiment scores. It returns four scores: <em>positive</em>, <em>neutral</em>, <em>negative</em>, 
+                        and <em>compound</em> which are proportions of each sentiment category. The 
+                        <em>compound score</em> is a normalized overall score from <em>-1 (very negative)</em> to <em>+1 (very positive)</em> 
+                        Sentiment Classification is based on the compound score: <em>greater than or equal to 0.05</em> is <em>positive</em>, 
+                        <em>less than or equal to -0.05</em> is <em>negative</em>, and <em>between -0.05 and 0.05</em> is <em>neutral</em>.
                     </p>
 
                 </li>
                 <li>
                     <p>
-                        <strong>DistilBERT</strong> sentiment analysis models classify text into categories like <strong>positive</strong> or <strong>negative</strong>, 
-                        and assign a <strong>confidence score</strong> to each prediction. The model outputs a probability for each class, and the class 
-                        with the highest probability is selected as the predicted sentiment. The <strong>confidence score</strong> reflects how certain 
-                        the model is about its prediction, ranging from <strong>0</strong> (no confidence) to <strong>1</strong> (full confidence). For example, 
-                        if a text is labeled <strong>positive</strong> with a confidence of <strong>0.92</strong>, it means the model is 92% confident that the 
-                        sentiment is positive. These scores help assess not just the predicted sentiment, but also how reliable that prediction is.
+                        <strong>DistilBERT</strong> is a deep learning model that classfies text into <em>positive</em> or <em>negative</em>, 
+                        and assigns a <em>confidence score</em> ranging from <em>0 (no confidence)</em> to <em>1 (full confidence)</em> to each prediction. 
+                        If a text is labeled <em>positive</em> with a confidence of <em>0.92</em>, it means the model is 92% confident that the 
+                        sentiment is positive.
                     </p>
                 </li>
             </ul>

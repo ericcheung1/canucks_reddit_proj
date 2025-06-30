@@ -5,7 +5,7 @@ bp = Blueprint("main", __name__)
 
 @bp.route('/')
 def index():
-    return f'<h1>Welcome to Canucks Sentiment Analysis! Home Page Coming Soon! Checkout the Posts Below!</h1><p><a href="{url_for("main.list_posts")}">View All Posts</a></p>'
+    return render_template("home_page.html")
 
 @bp.route('/posts')
 def list_posts():
