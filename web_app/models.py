@@ -10,7 +10,7 @@ class Reply(EmbeddedDocument):
     pos_sentiment = FloatField()
     vader_classification = StringField()
     distilbert_sentiment = StringField()
-    distilbert_confidence = FloatField()
+    distilbert_confidence = FloatField(default=0.0)
     utc_created = IntField()
 
     replies = ListField(EmbeddedDocumentField("Reply"))
@@ -25,7 +25,7 @@ class Comment(EmbeddedDocument):
     pos_sentiment = FloatField()
     vader_classification = StringField()
     distilbert_sentiment = StringField()
-    distilbert_confidence = FloatField()
+    distilbert_confidence = FloatField(default=0.0)
     utc_created = IntField()
 
     replies = ListField(EmbeddedDocumentField(Reply))

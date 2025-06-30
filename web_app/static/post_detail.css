@@ -155,3 +155,24 @@ a:hover {
     font-size: 0.9em;
     color: #666;
 }
+
+.POS-SENTIMENT {
+    font-weight: bold;
+    color: #ffffff;
+    padding: 2px;
+    background-color: #00843D;
+}
+
+.NEG-SENTIMENT {
+    font-weight: bold;
+    color: #ffffff;
+    padding: 2px;
+    background-color: #D2001C;
+}
+
+.NEU-SENTIMENT {
+    font-weight: bold;
+    color: #000000;
+    padding: 2px;
+    background-color: #FFB81C;
+}

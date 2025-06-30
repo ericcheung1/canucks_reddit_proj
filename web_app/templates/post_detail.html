@@ -10,8 +10,8 @@
     <header class="project-header">
         <h1>Canucks Sentiment Analysis</h1>
         <ul>
-            <li><a href="{{ url_for('main.list_posts') }}">All Posts</a></li>
             <li><a href="{{ url_for('main.index') }}">Home</a></li>
+            <li><a href="{{ url_for('main.list_posts') }}">All Posts</a></li>
         </ul>
     </header>
     <div>
@@ -30,32 +30,40 @@
             <li>
                 <p>
                     <strong>VADER Sentiment Results: </strong>
-                    Classification: <strong>{{ post.vader_post_classification }}</strong> |
-                    Number of Positive: <strong>{{ post.pos_count }}</strong> |
-                    Number of Neutral: <strong>{{ post.neu_count }}</strong> |
-                    Number of Negative: <strong>{{ post.neg_count }}</strong> |
+                    Classification: 
+                    <span class="{% if post.vader_post_classification == 'POSITIVE' %}POS-SENTIMENT
+                    {% elif post.vader_post_classification == 'NEGATIVE' %}NEG-SENTIMENT
+                    {% elif post.vader_post_classification == 'NEUTRAL' %}NEU-SENTIMENT{% endif %}">
+                    {{ post.vader_post_classification }}</span> ||
+                    Positive Comments: <strong>{{ post.pos_count }}</strong> ||
+                    Neutral Comments: <strong>{{ post.neu_count }}</strong> ||
+                    Negative Comments: <strong>{{ post.neg_count }}</strong> ||
                 </p>
                 <p>
                     <strong>VADER Scores:</strong>
-                    Mean Compound: <strong>{{ post.avg_compound | round(5) }}</strong> |
-                    Mean Positive: <strong>{{ post.avg_pos | round(5) }}</strong> | 
-                    Mean Neutral: <strong>{{ post.avg_neu | round(5) }}</strong> |
-                    Mean Negative: <strong>{{ post.avg_neg | round(5) }}</strong> |
+                    Mean Compound: <strong>{{ post.avg_compound | round(5) }}</strong> ||
+                    Mean Positive: <strong>{{ post.avg_pos | round(5) }}</strong> ||
+                    Mean Neutral: <strong>{{ post.avg_neu | round(5) }}</strong> ||
+                    Mean Negative: <strong>{{ post.avg_neg | round(5) }}</strong> ||
                 </p>
             
             </li>
             <li>
                 <p>
                     <strong>DistilBERT Sentiment Results: </strong> 
-                    Classification: <strong>{{ post.distilbert_post_classification }}</strong>
-                    Number of Positive: <strong>{{ post.distilbert_pos_count }}</strong> |
-                    Number of Negative: <strong>{{ post.distilbert_neg_count }}</strong> |
+                    Classification: 
+                    <span class="{% if post.distilbert_post_classification == 'POSITIVE' %}POS-SENTIMENT
+                    {% elif post.distilbert_post_classification == 'NEGATIVE' %}NEG-SENTIMENT
+                    {% elif post.distilbert_post_classification == 'NEUTRAL' %}NEU-SENTIMENT{% endif %}">
+                        {{ post.distilbert_post_classification }}</span> ||
+                    Number of Positive: <strong>{{ post.distilbert_pos_count }}</strong> ||
+                    Number of Negative: <strong>{{ post.distilbert_neg_count }}</strong> ||
                 </p>
             </li>
             <li>
                 <p>
                     <strong>DistilBERT Score:</strong>
-                    Mean Confidence Score: <strong>{{ post.distilbert_avg_confidence }}</strong> |
+                    Mean Confidence Score: <strong>{{ post.distilbert_avg_confidence | round(5) }}</strong> ||
                 </p>
             </li>
         </ul>
@@ -65,13 +73,13 @@
             <ul class="sentiment-box">
                 <li>
                     <p>
-                    <strong>VADER</strong> sentiment analysis returns four scores for each text: <strong>positive</strong>, <strong>neutral</strong>, 
-                    <strong>negative</strong>, and <strong>compound</strong>. The positive, neutral, and negative scores represent the 
-                    proportion of the text that falls into each sentiment category. The <strong>compound score</strong> is a normalized 
-                    value ranging from <strong>-1</strong> (most negative) to <strong>+1</strong> (most positive) that reflects the overall 
-                    sentiment of the text. To interpret the compound score: values <strong>≥ 0.05</strong> are considered <strong>positive</strong>, 
-                    values <strong>≤ -0.05</strong> are considered <strong>negative</strong>, and values <strong>between -0.05 and 0.05</strong> are 
-                    considered <strong>neutral</strong>.
+                        <strong>VADER</strong> sentiment analysis returns four scores for each text: <strong>positive</strong>, <strong>neutral</strong>, 
+                        <strong>negative</strong>, and <strong>compound</strong>. The positive, neutral, and negative scores represent the 
+                        proportion of the text that falls into each sentiment category. The <strong>compound score</strong> is a normalized 
+                        value ranging from <strong>-1</strong> (most negative) to <strong>+1</strong> (most positive) that reflects the overall 
+                        sentiment of the text. To interpret the compound score: values <strong>≥ 0.05</strong> are considered <strong>positive</strong>, 
+                        values <strong>≤ -0.05</strong> are considered <strong>negative</strong>, and values <strong>between -0.05 and 0.05</strong> are 
+                        considered <strong>neutral</strong>.
                     </p>
 
                 </li>
@@ -103,18 +111,26 @@
                             <li>
                                 <p>
                                     <strong>VADER Analysis:</strong>
-                                    Classification: <strong>{{ comment.vader_classification }}</strong> | 
-                                    Compound: <strong>{{ comment.compound_sentiment | round(5) }}</strong> | 
-                                    Positive: <strong>{{ comment.pos_sentiment | round(5) }}</strong> | 
-                                    Neutral: <strong>{{ comment.neu_sentiment | round(5) }}</strong> | 
-                                    Negative: <strong>{{ comment.neg_sentiment | round(5) }}</strong> | 
+                                    Classification: 
+                                    <span class="{% if comment.vader_classification == 'POSITIVE' %}POS-SENTIMENT
+                                    {% elif comment.vader_classification == 'NEGATIVE' %}NEG-SENTIMENT
+                                    {% elif comment.vader_classification == 'NEUTRAL' %}NEU-SENTIMENT{% endif %}">
+                                        {{ comment.vader_classification }}</span> ||
+                                    Compound: <strong>{{ comment.compound_sentiment | round(5) }}</strong> || 
+                                    Positive: <strong>{{ comment.pos_sentiment | round(5) }}</strong> || 
+                                    Neutral: <strong>{{ comment.neu_sentiment | round(5) }}</strong> || 
+                                    Negative: <strong>{{ comment.neg_sentiment | round(5) }}</strong> || 
                                 </p>
                             </li>
                             <li>
                                 <p>
                                     <strong>DistilBERT Analysis:</strong>
-                                    Classification: <strong>{{ comment.distilbert_sentiment }}</strong> |
-                                    Confidence Score: <strong>{{ comment.distilbert_confidence }}</strong> |
+                                    Classification: 
+                                    <span class="{% if comment.distilbert_sentiment == 'POSITIVE' %}POS-SENTIMENT
+                                    {% elif comment.distilbert_sentiment == 'NEGATIVE' %}NEG-SENTIMENT
+                                    {% elif comment.distilbert_sentiment == 'NEUTRAL' %}NEU-SENTIMENT{% endif %}">
+                                        {{ comment.distilbert_sentiment }}</span> ||
+                                    Confidence Score: <strong>{{ comment.distilbert_confidence | round(5) }}</strong> ||
                                 </p>
                             </li>
                         </ul>

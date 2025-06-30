@@ -71,7 +71,7 @@ def main():
         
         calculate_individual_score(post.comments)
 
-        post.save()
+        # post.save()
         updated_count += 1
 
     disconnect()
