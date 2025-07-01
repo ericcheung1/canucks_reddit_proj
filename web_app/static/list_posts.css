@@ -6,6 +6,65 @@ body {
     color: #333; 
 }
 
+body { 
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6; 
+    color: #333; 
+}
+
+.post-feed {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.reddit-post {
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  border-radius: 6px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  transition: box-shadow 0.2s ease;
+}
+
+.reddit-post:hover {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.post-title a {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #0079d3;
+  text-decoration: none;
+}
+
+.post-title a:hover {
+  text-decoration: underline;
+}
+
+.post-meta {
+  font-size: 1rem;
+  color: #000000;
+  margin-top: 0.5rem;
+}
+
+
+ul {
+    display: inline-block;
+    text-align: left; 
+}
+
+a { 
+    color: #007bff; 
+    text-decoration: none; 
+}
+a:hover { 
+    text-decoration: underline; 
+}
+
 .project-header {
     background-color: #00205B;
     color: #ffffff;
@@ -36,10 +95,11 @@ body {
     font-weight: bold;
     padding: 5px 12px;
     border-radius: 5px;
+    background-color: #00843D;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .project-header ul li a:hover {
-    background-color: #00843D;
+    background-color: #00205B;
     color: #ffffff;
 }

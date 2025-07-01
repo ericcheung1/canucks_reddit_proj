@@ -13,16 +13,26 @@
             <li><a href="{{ url_for('main.index') }}">Home</a></li>
         </ul>
     </header>
-    <ul>
-        {% for post in posts %}
-            <li>
-                <a href="{{ url_for('main.post_detail', post_id=post.post_id) }}">
-                    {{ post.title }} 
-                </a>
-            </li>
-        {% else %}
-            <li>No posts found. (Is your MongoDB running and data collected?)</li>
-        {% endfor %}
-    </ul>
+    <div class="post-feed">
+        <h2>
+            Post Game Threads from the 2024-25 NHL Season
+        </h2>
+        <div>
+            {% for post in posts %}
+                <div class="reddit-post">
+                    <div class="post-title">
+                        <a href="{{ url_for('main.post_detail', post_id=post.post_id) }}">
+                            {{ post.title.replace("Post Game Thread: ", "") }} 
+                        </a>
+                    </div>
+                    <div class="post-meta">
+                        {{ post.total_bodies }} comments
+                    </div>
+                </div>
+            {% else %}
+                <div>No posts found. (Is your MongoDB running and data collected?)</div>
+            {% endfor %}
+        </div>
+    </div>
 </body>
 </html>

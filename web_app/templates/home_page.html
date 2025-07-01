@@ -18,7 +18,7 @@
     </div>
     <div>
         <h2>
-            What this is and why I built it: 
+            What this is and why I made it: 
         </h2>
         <p>
             This app analyzes post-game threads from the r/canucks subreddit to understand how fans react after each game. It currently uses two 
@@ -29,40 +29,76 @@
         <p>
             I became invested in the Vancouver Canucks again during the 2023–24 season after their strong start to the regular season and have been 
             following them since. Having lived in BC all my life, I never fully got into the team after what happened in 2011. But ever since two 
-            easons ago, I’ve made it a habit to catch every game on TV if I can and became a frequent visitor of the r/canucks fan subreddit.
+            easons ago, I’ve made it a habit to catch every game on TV if I can and became a frequent visitor of the r/canucks subreddit.
             Since the team was doing so well in the 2023–24 season, I noticed that many comments and posts were positive. But starting with the 
             2024–25 season and continuing throughout, I began to notice a trend of negative comments and posts on the subreddit. So I thought there was 
             potential to combine my data science skills and Canucks fandom to create this project.
         </p>
+        <p>
+            This project started as an exercise in using the PRAW API to collect post-game threads and storing non-tabular data in MongoDB. 
+            I knew I wanted to analyze the data I was collecting and explore natural language processing. Eventually, I realized I wanted a way to 
+            showcase my work beyond just a GitHub repo so I built this Flask app to display the threads and sentiment results with a simple UI.
+            In the future, I plan to add a sarcasm classfier, more graphs and visualizations, and a player mention tracker. 
+        </p>
     </div>
     <div>
         <h2>Sentiment Analysis Models Used:</h2>
+        <p>Each thread and every comment within is scored by both models, and the results are displayed together for easy comparison.</p>
+        <div>
+        <p>
+            <strong>VADER</strong> (Valence Aware Dictionary and sEntiment Reasoner) is a pre-trained sentiment analysis tool designed for short, 
+            informal text like social media posts or reviews. It is part of <strong>NLTK</strong> (Natural Language Toolkit), a popular 
+            Python library for natural language processing.
+        </p>
+
+        <p>
+            It is <em>rule-based</em>, meaning it uses a predefined set of lexical rules and a sentiment dictionary with predetermined scores
+            rather than machine learning to evaluate text. It accounts for punctuation, capitalization, degree modifiers such as "very", and negations. 
+            For each text, it returns four scores: <strong>positive</strong>, <strong>neutral</strong>, and <strong>negative</strong> 
+            each indicating the proportion of sentiment in the text that belongs with each category, and a <strong>compound score</strong> from 
+            -1 to +1 summarizing overall sentiment.
+        </p>
+
+        <p>
+            Sentiment classification is based on the compound score using these standard thresholds:
+        </p>
         <ul>
-            <li>
-                <p>
-                    <strong>VADER</strong> (Valence Aware Dictionary and sEntiment Reasoner) is a sentiment analysis tool designed for short, 
-                    informal text like social media posts or reviews. It is part of <strong>NLTK</strong> (Natural Language Toolkit), a popular 
-                    Python library for natural language processing.
-                </p>
-
-                <p>
-                    VADER is <em>rule-based</em>, meaning it uses a predefined set of lexical rules and a sentiment dictionary—rather than machine learning—to 
-                    evaluate text. It accounts for punctuation, capitalization, degree modifiers (e.g., "very"), and negations. For each text, it returns four 
-                    scores: <strong>positive</strong>, <strong>neutral</strong>, and <strong>negative</strong> (indicating the proportion of sentiment in each direction), 
-                    and a <strong>compound score</strong> from -1 to +1 summarizing overall sentiment.
-                </p>
-
-                <p>
-                    Sentiment classification is based on the compound score using these standard thresholds:
-                </p>
-
-                    <ul>
-                        <li><strong>Compound ≥ 0.05</strong>: Positive</li>
-                        <li><strong>Compound ≤ -0.05</strong>: Negative</li>
-                        <li><strong>Between -0.05 and 0.05</strong>: Neutral</li>
-                    </ul>
-            </li>
+            <li><strong>Compound ≥ 0.05</strong>: Positive</li>
+            <li><strong>Compound ≤ -0.05</strong>: Negative</li>
+            <li><strong>Between -0.05 and 0.05</strong>: Neutral</li>
         </ul>
+        </div>
+        <div>
+            <p>
+                <strong>DistilBERT</strong> is a smaller, faster version of <strong>BERT</strong> (Bidirectional Encoder Representations from Transformers), 
+                a pre-trained state-of-the-art language model developed by Google. DistilBERT retains over 95% of BERT’s performance while being 40% smaller and 
+                60% faster, making it well-suited for real-time applications like this one.
+            </p>
+            <p>
+                Unlike VADER, which is rule-based, <strong>DistilBERT</strong> is a <em>machine learning model</em> trained on large amounts of text data. It uses a  
+                transformer architecture to understand the context and meaning of words in a sentence, allowing it to capture more nuanced sentiment, especially
+                in longer or more complex comments.
+            </p>
+            <p>
+                For each text, DistilBERT returns:
+            </p>
+            <ul>
+                <li><strong>Sentiment Label:</strong> Positive or Negative</li>
+                <li><strong>Confidence Score:</strong> Between 0 and 1, the model's certainty in its prediction</li>
+            </ul>
+        </div>
+    </div>
+    <div>
+        <h2>
+            More Technical Information:
+        </h2>
+        <p>
+            For more technical information including the source code, technologies used, data collection scripts, and model analysis scripts please check 
+            the README.md in the GitHub repository here:
+            <ul>
+                <li><a href="https://github.com/ericcheung1/canucks_reddit_proj" target="_blank", rel="noopener noreferrer">View Repository</a></li>
+            </ul>
+        </p>
     </div>
 
 

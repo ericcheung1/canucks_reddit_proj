@@ -9,7 +9,7 @@ def index():
 
 @bp.route('/posts')
 def list_posts():
-    all_posts = Post.objects().only('title', 'post_id') # type: ignore
+    all_posts = Post.objects().only('title', 'post_id', "total_bodies") # type: ignore
     return render_template("list_posts.html", posts=all_posts)
 
 @bp.route('/posts/<string:post_id>')

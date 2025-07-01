@@ -73,12 +73,12 @@
             <ul class="sentiment-box">
                 <li>
                     <p>
-                        <strong>VADER</strong> is a rules-based model that calculates sentiment results using a large dictionary of words with predefined 
-                        sentiment scores. It returns four scores: <em>positive</em>, <em>neutral</em>, <em>negative</em>, 
-                        and <em>compound</em> which are proportions of each sentiment category. The 
-                        <em>compound score</em> is a normalized overall score from <em>-1 (very negative)</em> to <em>+1 (very positive)</em> 
-                        Sentiment Classification is based on the compound score: <em>greater than or equal to 0.05</em> is <em>positive</em>, 
-                        <em>less than or equal to -0.05</em> is <em>negative</em>, and <em>between -0.05 and 0.05</em> is <em>neutral</em>.
+                        <strong>VADER</strong> is a rules-based model that calculates sentiment and returns four scores: positive, 
+                        neutral, negative, and compound which represents proportion of each sentiment category in the comment or thread.
+                        A 0.15 positive score means that 15% of the comment contains positive sentiment. The compound score is a normalized overall score 
+                        from -1 meaning very negative to +1 meaning very positive. Sentiment Classification is based on the compound score: greater than 
+                        or equal to 0.05 is positive, less than or equal to -0.05 is negative, and between -0.05 and 0.05
+                        is neutral.
                     </p>
 
                 </li>
