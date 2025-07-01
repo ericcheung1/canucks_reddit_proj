@@ -21,11 +21,11 @@
             <a href="https://www.google.com/search?q={{ clean_title|urlencode }}" target="_blank", rel="noopener noreferrer">View Score</a>
         </p>
 
-        <h3>Sentiment Analysis: </h3>
+        <h3>Sentiment Analysis</h3>
 
         <div class="sentiment-div">
         <div>
-            <h3>Classification and Scores: Overall Results For Post</h3>
+            <h3>Overall Classification and Scores for Post</h3>
         <ul class="sentiment-box">
             <li>
                 <p>
@@ -69,7 +69,7 @@
         </ul>
         </div>
         <div>
-            <h3>Models Used: </h3>
+            <h3>Model Results and Interpretation </h3>
             <ul class="sentiment-box">
                 <li>
                     <p>
@@ -85,9 +85,9 @@
                 <li>
                     <p>
                         <strong>DistilBERT</strong> is a deep learning model that classfies text into <em>positive</em> or <em>negative</em>, 
-                        and assigns a <em>confidence score</em> ranging from <em>0 (no confidence)</em> to <em>1 (full confidence)</em> to each prediction. 
-                        If a text is labeled <em>positive</em> with a confidence of <em>0.92</em>, it means the model is 92% confident that the 
-                        sentiment is positive.
+                        and assigns a <em>confidence score</em> to each prediction, ranging from <em>0 indicating no confidence</em> to <em>1 indicating 
+                        full confidence</em>. If a text is labeled <em>positive</em> with a confidence of <em>0.92</em>, it means the model is 92% confident
+                        that the sentiment is positive. Posts are classified as neutral if there are equal number of postive and negative comments.
                     </p>
                 </li>
             </ul>
