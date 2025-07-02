@@ -14,7 +14,7 @@
         </ul>
     </header>
     <div>
-        <h2>Welcome to Canucks Sentiment Analysis! Checkout the analysis by clicking the All Post button above</h2>
+        <h2>Welcome to Canucks Sentiment Analysis! Checkout the analysis by clicking the All Posts button above!</h2>
     </div>
     <div class="paragraph">
         <h2>
@@ -22,24 +22,24 @@
         </h2>
         <p>
             This app analyzes post-game threads from the r/canucks subreddit to understand how fans react after each game. 
-            I specifically targeted post-game threads because they reflect the immediate emotional responses of fans who actually watched the games.
+            I specifically targeted post-game threads because they reflect the immediate response of fans who actively watched the games.
             It currently uses two different sentiment analysis models to classify the sentiment of each comment, as well as the overall tone of each thread.
-            The All Posts page contains 62 post-game threads from the 2024–25 season, each with its own sentiment breakdown. Every comment is displayed alongside 
+            The All Posts page contains 62 post-game threads from the 2024–25 NHL season, each with its own sentiment breakdown. Every comment is displayed alongside 
             its sentiment classification, giving a picture of how fans responded after each game.
         </p>
         <p>
             I became invested in the Vancouver Canucks again during the 2023–24 season after their strong start to the regular season and have been 
             following them since. Having lived in BC all my life, I never fully got into the team after what happened in 2011. But ever since two 
-            easons ago, I’ve made it a habit to catch every game on TV if I can and became a frequent visitor of the r/canucks subreddit.
+            seasons ago, I’ve made it a habit to catch every game on TV if I can and became a frequent visitor of the r/canucks subreddit.
             Since the team was doing so well in the 2023–24 season, I noticed that many comments and posts were positive. But starting with the 
-            2024–25 season and continuing throughout, I began to notice a trend of negative comments and posts on the subreddit. So I thought there was 
-            potential to combine my data science skills and Canucks fandom to create this project.
+            2024–25 season and continuing throughout, I began to notice a trend of negative comments and posts appearing on the subreddit. So I thought 
+            there was potential to work on my data science skills and to combine it with my Canucks fandom in one project.
         </p>
         <p>
             This project started as an exercise in using the PRAW API to collect post-game threads and storing non-tabular data in MongoDB. 
-            I knew I wanted to analyze the data I was collecting and explore natural language processing. Eventually, I realized I wanted a way to 
-            showcase my work beyond just a GitHub repo so I built this Flask app to display the threads and sentiment results with a simple UI.
-            In the future, I plan to add a sarcasm classfier, more graphs and visualizations, and a player mention tracker. 
+            I knew I wanted to analyze the data I was collecting and explore natural language processing, then eventually I realized I wanted a way to 
+            showcase my work beyond a GitHub repo which was why I made this Flask app to display the threads and sentiment results with a simple UI.
+            In the future, I plan to add a sarcasm classfier, graphs/visualizations, and a player mention tracker. 
         </p>
     </div>
     <div class="paragraph">
@@ -53,7 +53,7 @@
         </p>
 
         <p>
-            It is <em>rule-based</em>, meaning it uses a predefined set of lexical rules and a sentiment dictionary with predetermined scores
+            It is <em>rule-based</em>, meaning it uses a predefined set of lingustic rules and a sentiment dictionary with predetermined scores
             rather than machine learning to evaluate text. It accounts for punctuation, capitalization, degree modifiers such as "very", and negations. 
             For each text, it returns four scores: <strong>positive</strong>, <strong>neutral</strong>, and <strong>negative</strong> 
             each indicating the proportion of sentiment in the text that belongs with each category, and a <strong>compound score</strong> from 
@@ -95,23 +95,22 @@
             While both <strong>VADER</strong> and <strong>DistilBERT</strong> offer useful generalized insights, they also have some known drawbacks.
         </p>
         <ul>
-            <li>Replies are often misclassified due to their differing lengths, sarcasm, or reliance on context from the parent comment</li>
+            <li>Comments/replies can often be misclassified due to their differing lengths, sarcasm, or reliance on context from the parent comment/post</li>
             <li>Sarcasm and irony are difficult for both models to detect, especially in emotionally charged or joking comments</li>
             <li>No game context means the models analyzes the text in isolation  and can’t account for what actually happened during the game</li>
             <li>Mixed-tone comments such as “We were awful, but at least this player showed up” often get flattened into a single label</li>
             <li>DistilBERT confidence scores can be misleading on short or vague comments, especially replies</li>
         </ul>
         <p>
-            These limitations are part of what makes this project interesting and I’m exploring ways to improve accuracy in future updates.
+            These limitations are part of what makes this project interesting and I’m exploring ways to extract additional insights in future updates.
         </p>
     </div>
     <div class="paragraph">
         <h2>More Technical Information</h2>
         <p>
-            For more technical information including the source code, technologies used, data collection scripts, and model analysis scripts please check 
-            the README.md in the GitHub repository here:
+            For more technical information including the source code, technologies used, data collection scripts, and sentiment analysis scripts please check here:
             <ul>
-                <li><a href="https://github.com/ericcheung1/canucks_reddit_proj" target="_blank", rel="noopener noreferrer">View Repository</a></li>
+                <li><a href="https://github.com/ericcheung1/canucks_reddit_proj" target="_blank", rel="noopener noreferrer">GitHub Repository</a></li>
             </ul>
         </p>
     </div>
