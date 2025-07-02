@@ -4,7 +4,7 @@ Live Site: https://canucks-sentiment.onrender.com (Initial load may take up to a
 
 ## Project Overview
 
-This project is an ongoing effort to analyze the sentiment of Vancouver Canucks fans regarding the 2024-25 NHL season by examining post-game discussions on Reddit. It encompasses data collection, sentiment analysis, and web application development for data display
+This project is an ongoing effort to analyze the sentiment of Vancouver Canucks fans regarding the 2024-25 NHL season by examining post-game discussions on Reddit. It encompasses data collection, sentiment analysis, and web application development for data display.
 
 The completed phase involved:
 * Gathering comments and replies from post-game threads within the r/canucks subreddit using the PRAW API.
@@ -19,7 +19,7 @@ Data is collected from the following sources:
 * **Reddit API:** Utilizing the PRAW (Python Reddit API Wrapper) library to access and retrieve comments from the r/canucks subreddit.
 * **Subreddit:** r/canucks (https://www.reddit.com/r/canucks/) - Specifically targeting post-game threads for the 2024-25 NHL season.
 
-The utility scripts responsible for data collection is with the `src/reddit_pipeline/` folder and the main script is `src/main_pipeline.py`
+The utility scripts responsible for data collection is with the `src/reddit_pipeline/` folder and the main script is `src/main_pipeline.py`.
 
 ## Web Application
 
