@@ -16,13 +16,14 @@
     <div>
         <h2>Welcome to Canucks Sentiment Analysis! Checkout the analysis by clicking the All Post button above</h2>
     </div>
-    <div>
+    <div class="paragraph">
         <h2>
             What this is and why I made it 
         </h2>
         <p>
-            This app analyzes post-game threads from the r/canucks subreddit to understand how fans react after each game. It currently uses two 
-            different sentiment analysis models to classify the sentiment of each comment, as well as the overall tone of each thread.
+            This app analyzes post-game threads from the r/canucks subreddit to understand how fans react after each game. 
+            I specifically targeted post-game threads because they reflect the immediate emotional responses of fans who actually watched the games.
+            It currently uses two different sentiment analysis models to classify the sentiment of each comment, as well as the overall tone of each thread.
             The All Posts page contains 62 post-game threads from the 2024–25 season, each with its own sentiment breakdown. Every comment is displayed alongside 
             its sentiment classification, giving a picture of how fans responded after each game.
         </p>
@@ -41,7 +42,7 @@
             In the future, I plan to add a sarcasm classfier, more graphs and visualizations, and a player mention tracker. 
         </p>
     </div>
-    <div>
+    <div class="paragraph">
         <h2>Sentiment Analysis Models</h2>
         <p>Each thread and every comment within is scored by both models, and the results are displayed together for easy comparison.</p>
         <div>
@@ -75,7 +76,7 @@
                 60% faster, making it well-suited for real-time applications like this one.
             </p>
             <p>
-                Unlike VADER, which is rule-based, <strong>DistilBERT</strong> is a <em>machine learning model</em> trained on large amounts of text data. It uses a  
+                Unlike VADER, which is rule-based, <strong>DistilBERT</strong> is a <em>deep learning model</em> trained on large amounts of text data. It uses a  
                 transformer architecture to understand the context and meaning of words in a sentence, allowing it to capture more nuanced sentiment, especially
                 in longer or more complex comments.
             </p>
@@ -88,10 +89,24 @@
             </ul>
         </div>
     </div>
-    <div>
-        <h2>
-            More Technical Information
-        </h2>
+    <div class="paragraph">
+        <h2>Limitations</h2>
+        <p>
+            While both <strong>VADER</strong> and <strong>DistilBERT</strong> offer useful generalized insights, they also have some known drawbacks.
+        </p>
+        <ul>
+            <li>Replies are often misclassified due to their differing lengths, sarcasm, or reliance on context from the parent comment</li>
+            <li>Sarcasm and irony are difficult for both models to detect, especially in emotionally charged or joking comments</li>
+            <li>No game context means the models analyzes the text in isolation  and can’t account for what actually happened during the game</li>
+            <li>Mixed-tone comments such as “We were awful, but at least this player showed up” often get flattened into a single label</li>
+            <li>DistilBERT confidence scores can be misleading on short or vague comments, especially replies</li>
+        </ul>
+        <p>
+            These limitations are part of what makes this project interesting and I’m exploring ways to improve accuracy in future updates.
+        </p>
+    </div>
+    <div class="paragraph">
+        <h2>More Technical Information</h2>
         <p>
             For more technical information including the source code, technologies used, data collection scripts, and model analysis scripts please check 
             the README.md in the GitHub repository here:
@@ -103,18 +118,4 @@
 
 
 </body>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </html>

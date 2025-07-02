@@ -17,10 +17,6 @@
     <div>
         <h1>{{ clean_title }}</h1>
 
-        <p><strong>Score:</strong> 
-            <a href="https://www.google.com/search?q={{ clean_title|urlencode }}" target="_blank", rel="noopener noreferrer">View Score</a>
-        </p>
-
         <h3>Sentiment Analysis</h3>
 
         <div class="sentiment-div">
@@ -41,10 +37,10 @@
                 </p>
                 <p>
                     <strong>VADER Scores:</strong>
-                    Mean Compound: <strong>{{ post.avg_compound | round(5) }}</strong> ||
-                    Mean Positive: <strong>{{ post.avg_pos | round(5) }}</strong> ||
-                    Mean Neutral: <strong>{{ post.avg_neu | round(5) }}</strong> ||
-                    Mean Negative: <strong>{{ post.avg_neg | round(5) }}</strong> ||
+                    Mean Compound: <strong>{{ post.avg_compound | round(3) }}</strong> ||
+                    Mean Positive: <strong>{{ post.avg_pos | round(3) }}</strong> ||
+                    Mean Neutral: <strong>{{ post.avg_neu | round(3) }}</strong> ||
+                    Mean Negative: <strong>{{ post.avg_neg | round(3) }}</strong> ||
                 </p>
             
             </li>
@@ -63,13 +59,13 @@
             <li>
                 <p>
                     <strong>DistilBERT Score:</strong>
-                    Mean Confidence Score: <strong>{{ post.distilbert_avg_confidence | round(5) }}</strong> ||
+                    Mean Confidence Score: <strong>{{ post.distilbert_avg_confidence | round(3) }}</strong> ||
                 </p>
             </li>
         </ul>
         </div>
         <div>
-            <h3>Model Results and Interpretation </h3>
+            <h3>Model Details and Interpretation </h3>
             <ul class="sentiment-box">
                 <li>
                     <p>
@@ -90,11 +86,21 @@
                         that the sentiment is positive. Posts are classified as neutral if there are equal number of postive and negative comments.
                     </p>
                 </li>
+                <li>
+                    <p>
+                        Sentiment classifications may be inaccurate, especially for short replies, sarcastic comments, or posts lacking context. 
+                        Both models analyze text in isolation and can miss nuance.
+                    </p>
+                </li>
             </ul>
         </div>
         </div>
 
-        <h3>Comments: Total {{ post.total_bodies }}</h3>
+        <p><strong>Score:</strong> 
+            <a href="https://www.google.com/search?q={{ clean_title|urlencode }}" target="_blank", rel="noopener noreferrer">View Score</a>
+        </p>
+
+        <h3>Comments: Total {{ post.total_bodies }} (Warning: Reddit Comments May Contain Swearing or Explicit Language)</h3>
         
         <div class="comment-div">
         {% macro render_comments(comments, level) %}
@@ -113,10 +119,10 @@
                                     {% elif comment.vader_classification == 'NEGATIVE' %}NEG-SENTIMENT
                                     {% elif comment.vader_classification == 'NEUTRAL' %}NEU-SENTIMENT{% endif %}">
                                         {{ comment.vader_classification }}</span> ||
-                                    Compound: <strong>{{ comment.compound_sentiment | round(5) }}</strong> || 
-                                    Positive: <strong>{{ comment.pos_sentiment | round(5) }}</strong> || 
-                                    Neutral: <strong>{{ comment.neu_sentiment | round(5) }}</strong> || 
-                                    Negative: <strong>{{ comment.neg_sentiment | round(5) }}</strong> || 
+                                    Compound: <strong>{{ comment.compound_sentiment | round(3) }}</strong> || 
+                                    Positive: <strong>{{ comment.pos_sentiment | round(3) }}</strong> || 
+                                    Neutral: <strong>{{ comment.neu_sentiment | round(3) }}</strong> || 
+                                    Negative: <strong>{{ comment.neg_sentiment | round(3) }}</strong> || 
                                 </p>
                             </li>
                             <li>
@@ -127,7 +133,7 @@
                                     {% elif comment.distilbert_sentiment == 'NEGATIVE' %}NEG-SENTIMENT
                                     {% elif comment.distilbert_sentiment == 'NEUTRAL' %}NEU-SENTIMENT{% endif %}">
                                         {{ comment.distilbert_sentiment }}</span> ||
-                                    Confidence Score: <strong>{{ comment.distilbert_confidence | round(5) }}</strong> ||
+                                    Confidence Score: <strong>{{ comment.distilbert_confidence | round(3) }}</strong> ||
                                 </p>
                             </li>
                         </ul>

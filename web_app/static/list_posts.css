@@ -15,7 +15,7 @@ body {
 .reddit-post {
   background-color: #ffffff;
   border: 1px solid #000000;
-  border-radius: 6px;
+  /* border-radius: 6px; */
   padding: 1rem;
   margin-bottom: 1rem;
   box-shadow: 0 1px 3px rgba(0,0,0,0.05);
@@ -61,8 +61,8 @@ a:hover {
     background-color: #00205B;
     color: #ffffff;
     text-align: center;
-    padding: 15px 20px;
-    border-radius: 0px 0px 10px 10px;
+    padding: 5px 20px;
+    /* border-radius: 0px 0px 10px 10px; */
     margin-bottom: 20px;
 }
 
@@ -76,7 +76,7 @@ a:hover {
 .project-header ul {
     list-style-type: none;
     padding: 0;
-    margin: 10px 0px 0px 0px;
+    margin: 2px 0px 0px 0px;
     display: flex;
     justify-content: center;
     gap: 20px;
