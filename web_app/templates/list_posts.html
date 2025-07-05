@@ -14,16 +14,16 @@
         </ul>
     </header>
 
-    
-    <div class="post-container">
-        <div class="reddit-post-chart">
-            <div class="reddit-post-header">📊 Season Sentiment Summary</div>
-            {{ chart | safe}}
-        </div>
-    </div>
-
-
     <div class="post-feed">
+        <div>
+            <h2>
+                Positive Comment Percentage Summary
+            </h2>
+            <div class="reddit-post-chart">
+                <div class="reddit-post-header"></div>
+                {{ chart | safe}}
+            </div>
+        </div>
         <h2>
             Post Game Threads from the 2024-25 NHL Season
         </h2>
