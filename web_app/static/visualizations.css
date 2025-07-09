@@ -6,53 +6,6 @@ body {
     color: #000000; 
 }
 
-.post-feed {
-  max-width: 700px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-  /* border: 1px solid #000000; */
-}
-
-.reddit-post {
-  background-color: #ffffff;
-  border: 1px solid #000000;
-  /* border-radius: 6px; */
-  padding: 1rem;
-  margin-bottom: 1rem;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-  transition: box-shadow 0.2s ease;
-}
-
-.post-title a {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #0079d3;
-  text-decoration: none;
-}
-
-.post-title a:hover {
-  text-decoration: underline;
-}
-
-.post-meta {
-  font-size: 1rem;
-  color: #000000;
-  margin-top: 0.5rem;
-}
-
-ul {
-    display: inline-block;
-    text-align: left; 
-}
-
-a { 
-    color: #007bff; 
-    text-decoration: none; 
-}
-a:hover { 
-    text-decoration: underline; 
-}
-
 .project-header {
     background-color: #00205B;
     color: #ffffff;
@@ -90,4 +43,28 @@ a:hover {
 .project-header ul li a:hover {
     background-color: #00205B;
     color: #ffffff;
+}
+
+a { 
+    color: #007bff; 
+    text-decoration: none; 
+}
+a:hover { 
+    text-decoration: underline; 
+}
+
+.post-feed {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  /* border: 1px solid #000000; */
+  /* max-width: 1200px; */
+}
+
+.reddit-post-chart {
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  /* border-radius: 6px; */
+  padding: 12px;
+  margin-bottom: 16px;
 }

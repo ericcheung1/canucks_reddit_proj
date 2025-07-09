@@ -19,12 +19,22 @@ def sentiment_distribution(all_post_obj):
 
     fig = make_subplots(rows=1, cols=2, shared_xaxes=True, shared_yaxes=True, subplot_titles=("VADER", "DistilBERT"))
 
-    fig.add_trace(go.Scatter(x=df["Local_time"], y=df["V_POS"], name="VADER Positive", mode="lines"), row=1, col=1)
-    fig.add_trace(go.Scatter(x=df["Local_time"], y=df["V_NEU"], name="VADER Neutral", mode="lines"), row=1, col=1)
-    fig.add_trace(go.Scatter(x=df["Local_time"], y=df["V_NEG"], name="VADER Negative", mode="lines"), row=1, col=1)
+    fig.add_trace(go.Scatter(x=df["Local_time"], y=df["V_POS"], name="VADER Positive", 
+                             line=dict(color="#00843D", width=2.5, dash="dashdot")), row=1, col=1)
+    
+    fig.add_trace(go.Scatter(x=df["Local_time"], y=df["V_NEU"], name="VADER Neutral", 
+                             line=dict(color="#FFB81C", width=2.5, dash="dashdot")), row=1, col=1)
+    
+    fig.add_trace(go.Scatter(x=df["Local_time"], y=df["V_NEG"], name="VADER Negative", 
+                             line=dict(color="#D2001C", width=2.5, dash="dashdot")), row=1, col=1)
+    
 
-    fig.add_trace(go.Scatter(x=df["Local_time"], y=df["D_POS"], name="DistilBERT Positive", mode="lines"), row=1, col=2)
-    fig.add_trace(go.Scatter(x=df["Local_time"], y=df["D_NEG"], name="DistilBERT Negative", mode="lines"), row=1, col=2)
+
+    fig.add_trace(go.Scatter(x=df["Local_time"], y=df["D_POS"], name="DistilBERT Positive", 
+                             line=dict(color="#00843D", width=2.5, dash="dashdot")), row=1, col=2)
+    
+    fig.add_trace(go.Scatter(x=df["Local_time"], y=df["D_NEG"], name="DistilBERT Negative", 
+                             line=dict(color="#D2001C", width=2, dash="dashdot")), row=1, col=2)
 
     fig.update_layout(height=675)
 

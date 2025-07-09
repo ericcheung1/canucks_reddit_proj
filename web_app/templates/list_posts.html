@@ -13,19 +13,18 @@
             <li><a href="{{ url_for('main.index') }}">Home</a></li>
         </ul>
     </header>
-
     <div class="post-feed">
-        <div>
-            <h2>
-                Positive Comment Percentage Summary
-            </h2>
-            <div class="reddit-post-chart">
-                <div class="reddit-post-header"></div>
-                {{ chart_one | safe}}
-            </div>
-            <div class="reddit-post-chart">
-                <div class="reddit-post-header"></div>
-                {{ chart_two | safe}}
+        <h2>
+            Model Summary Graph
+        </h2>
+        <div class="reddit-post">
+            <div class="post-title">
+                <a href="{{ url_for('main.draw_graphs') }}">
+                    Sentiment Trends for Vancouver Canucks
+                </a>
+                <div class="post-meta">
+                    2 Graphs
+                </div>
             </div>
         </div>
         <h2>
@@ -33,7 +32,6 @@
         </h2>
         <div>
             {% for post in posts %}
-            <div class="reddit-post-container">
                 <div class="reddit-post">
                     <div class="post-title">
                         <a href="{{ url_for('main.post_detail', post_id=post.post_id) }}">
@@ -44,11 +42,10 @@
                         {{ post.total_bodies }} comments
                     </div>
                 </div>
-            </div>
-                {% else %}
-                    <div>No posts found. (Is your MongoDB running and data collected?)</div>
-                {% endfor %}
+            {% else %}
+                <div>No posts found. (Is your MongoDB running and data collected?)</div>
+            {% endfor %}
         </div>
-    </div>
+    </div>   
 </body>
 </html>

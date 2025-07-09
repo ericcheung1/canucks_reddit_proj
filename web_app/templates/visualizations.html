@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport", content="width=device-width initial-scale=1.0">
+    <title>Canucks Sentiment: Visualizations</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='visualizations.css') }}">
+</head>
+<body>
+    <header class="project-header">
+        <h1>Canucks Sentiment Analysis</h1>
+        <ul>
+            <li><a href="{{ url_for('main.index') }}">Home</a></li>
+            <li><a href="{{ url_for('main.list_posts') }}">All Posts</a></li>
+        </ul>
+    </header>
+
+    <div class="post-feed">
+        <h2>Sentiment Distribution for Each Model</h2>
+        <div class="reddit-post-chart">
+            <div class="reddit-post-header"></div>
+            {{ chart_one | safe}}
+        </div>
+    </div>
+</body>
+</html>

@@ -30,8 +30,12 @@ def post_detail(post_id):
     else:
         return "Post Not Found!", 404
     
-@bp.route('/visualiztions')
+@bp.route('/visualize')
 def draw_graphs():
-    all_posts = Post.objects() 
-
-    return "<h2>In Progress!</h2>"
+    all_posts = Post.objects().only('title', 'post_id', "total_bodies", # type: ignore
+        "pos_count", "neu_count", "neg_count","utc_created",
+        "distilbert_pos_count", "distilbert_neg_count") 
+    
+    chart1 = sentiment_distribution(all_posts)
+    chart2 = create_pct_pos_graph(all_posts)
+    return render_template("visualizations.html", chart_one=chart1, chart_two = chart2)

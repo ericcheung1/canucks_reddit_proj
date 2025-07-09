@@ -32,7 +32,6 @@ def create_pct_pos_graph(all_post_obj):
                 line=dict(width=2)))
 
     fig.update_layout(
-        title=dict(text="Percentage of Positive Comments in VADER vs. DistilBERT"),
         xaxis=dict(title=dict(text="Time")),
         yaxis=dict(title=dict(text="Percentage of Positive Comments"),
                 tickformat=".0%"),
