@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, url_for
 from .models import Post, Comment, Reply
 from .graphics.dual_sentiment import sentiment_distribution
-from .graphics.percent_positive import create_pct_pos_graph
+from .graphics.sentiment_proportions import draw_pie_chart
 
 bp = Blueprint("main", __name__)
 
@@ -16,9 +16,8 @@ def list_posts():
         "pos_count", "neu_count", "neg_count","utc_created",
         "distilbert_pos_count", "distilbert_neg_count") 
     chart1 = sentiment_distribution(all_posts)
-    chart2 = create_pct_pos_graph(all_posts)
     return render_template("list_posts.html", posts=all_posts, 
-                           chart_one=chart1, chart_two = chart2)
+                           chart_one=chart1)
 
 @bp.route('/posts/<string:post_id>')
 def post_detail(post_id):
@@ -37,5 +36,5 @@ def draw_graphs():
         "distilbert_pos_count", "distilbert_neg_count") 
     
     chart1 = sentiment_distribution(all_posts)
-    chart2 = create_pct_pos_graph(all_posts)
+    chart2 = draw_pie_chart(all_posts)
     return render_template("visualizations.html", chart_one=chart1, chart_two = chart2)
