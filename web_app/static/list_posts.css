@@ -40,10 +40,18 @@ body {
   margin-top: 0.5rem;
 }
 
-ul {
+.post-meta ul {
+  list-style-type: none;
+  display: flex;
+  padding: 0px;
+  margin: 0px;
+  gap: 20px;
+}
+
+/* ul {
     display: inline-block;
     text-align: left; 
-}
+} */
 
 a { 
     color: #007bff; 
@@ -90,4 +98,25 @@ a:hover {
 .project-header ul li a:hover {
     background-color: #00205B;
     color: #ffffff;
+}
+
+.POS-SENTIMENT {
+    font-weight: bold;
+    color: #ffffff;
+    padding: 2px;
+    background-color: #00843D;
+}
+
+.NEG-SENTIMENT {
+    font-weight: bold;
+    color: #ffffff;
+    padding: 2px;
+    background-color: #D2001C;
+}
+
+.NEU-SENTIMENT {
+    font-weight: bold;
+    color: #000000;
+    padding: 2px;
+    background-color: #FFB81C;
 }

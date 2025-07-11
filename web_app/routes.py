@@ -13,11 +13,9 @@ def index():
 def list_posts():
     all_posts = Post.objects().only( # type: ignore
         'title', 'post_id', "total_bodies", 
-        "pos_count", "neu_count", "neg_count","utc_created",
-        "distilbert_pos_count", "distilbert_neg_count") 
-    chart1 = sentiment_distribution(all_posts)
-    return render_template("list_posts.html", posts=all_posts, 
-                           chart_one=chart1)
+        "vader_post_classification", "distilbert_post_classification")
+    
+    return render_template("list_posts.html", posts=all_posts)
 
 @bp.route('/posts/<string:post_id>')
 def post_detail(post_id):

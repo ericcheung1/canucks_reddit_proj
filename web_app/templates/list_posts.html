@@ -39,7 +39,21 @@
                         </a>
                     </div>
                     <div class="post-meta">
-                        {{ post.total_bodies }} comments
+                        <ul>
+                            <li>{{ post.total_bodies }} comments ||</li> 
+                            <li>VADER:
+                                <span class="{% if post.vader_post_classification == 'POSITIVE' %}POS-SENTIMENT
+                                {% elif post.vader_post_classification == 'NEGATIVE' %}NEG-SENTIMENT
+                                {% elif post.vader_post_classification == 'NEUTRAL' %}NEU-SENTIMENT{% endif %}">
+                                {{ post.vader_post_classification }}</span> ||
+                            </li>
+                            <li>DistilBERT: 
+                                <span class="{% if post.distilbert_post_classification == 'POSITIVE' %}POS-SENTIMENT
+                                {% elif post.distilbert_post_classification == 'NEGATIVE' %}NEG-SENTIMENT
+                                {% elif post.distilbert_post_classification == 'NEUTRAL' %}NEU-SENTIMENT{% endif %}">
+                                {{ post.distilbert_post_classification }}</span> ||
+                            </li>
+                        </ul>
                     </div>
                 </div>
             {% else %}
